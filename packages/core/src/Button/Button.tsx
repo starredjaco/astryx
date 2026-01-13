@@ -1,3 +1,12 @@
+/**
+ * @file Button.tsx
+ * @input Uses React forwardRef, ButtonHTMLAttributes, ReactNode
+ * @output Exports Button component, ButtonProps, ButtonVariant, ButtonSize types
+ * @position Core implementation; consumed by index.ts, tested by Button.test.tsx
+ *
+ * SYNC: When modified, update this header and /packages/core/src/Button/README.md
+ */
+
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import * as stylex from '@stylexjs/stylex';
 import {
