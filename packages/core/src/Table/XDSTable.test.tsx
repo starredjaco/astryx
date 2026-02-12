@@ -547,7 +547,7 @@ describe('XDSTable', () => {
 
   it('renders children mode with XDSTableRow and XDSTableCell', () => {
     render(
-      <XDSTable>
+      <XDSTable density="balanced" dividers="rows">
         <XDSTableRow>
           <XDSTableCell>Streamed A</XDSTableCell>
           <XDSTableCell>Streamed B</XDSTableCell>

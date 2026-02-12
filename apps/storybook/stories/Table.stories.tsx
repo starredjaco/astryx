@@ -1,6 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {
   XDSTable,
+  XDSBaseTable,
   XDSTableRow,
   XDSTableCell,
   proportional,
