@@ -4,6 +4,7 @@ import path from 'path';
 
 const rootDir = path.resolve(__dirname, '../../..');
 const coreRoot = path.resolve(__dirname, '../../../packages/core/src');
+const themeRoot = path.resolve(__dirname, '../../../packages/theme/src');
 
 const config: StorybookConfig = {
   stories: [
@@ -48,6 +49,7 @@ const config: StorybookConfig = {
           aliases: {
             '@xds/core/*': [path.join(rootDir, 'packages/core/src/*')],
             '@xds/core': [path.join(rootDir, 'packages/core/src')],
+            '@xds/theme/*': [path.join(rootDir, 'packages/theme/src/*')],
           },
           unstable_moduleResolution: {
             type: 'commonJS',
@@ -60,6 +62,21 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           '@xds/core': coreRoot,
+          '@xds/theme': themeRoot,
+        },
+      },
+      css: {
+        // Prevent LightningCSS from lowering light-dark() into
+        // --lightningcss-light/--lightningcss-dark polyfill variables.
+        // XDS tokens use native light-dark() which is baseline 2024:
+        // Chrome 123+, Firefox 120+, Safari 17.5+
+        transformer: 'lightningcss',
+        lightningcss: {
+          targets: {
+            chrome: 123 << 16,
+            firefox: 120 << 16,
+            safari: (17 << 16) | (5 << 8),
+          },
         },
       },
     };
