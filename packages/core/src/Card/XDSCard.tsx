@@ -2,21 +2,27 @@
  * @file XDSCard.tsx
  * @input Uses container utility, StyleX, ThemeContext
  * @output Exports XDSCard component and XDSCardProps
- * @position Higher-order container component for card layouts
+ * @position Core card container component
+ *
+ * SYNC: When modified, update these files to stay in sync:
+ * - /packages/core/src/Card/README.md (props table, features)
+ * - /packages/core/src/Card/index.ts (exports if types change)
+ * - /apps/storybook/stories/Card.stories.tsx (storybook stories)
  */
 
 import {forwardRef, useContext, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';
-import {colorVars, radiusVars, elevationVars} from '../../theme/tokens.stylex';
-import {ThemeContext} from '../../theme/ThemeContext';
-import type {StyleXStyles as ThemeStyleXStyles} from '../../theme/types';
-import {container} from './container.stylex';
+import {colorVars, radiusVars, elevationVars} from '../theme/tokens.stylex';
+import {ThemeContext} from '../theme/ThemeContext';
+import type {StyleXStyles as ThemeStyleXStyles} from '../theme/types';
+import {container} from '../Layout/container.stylex';
+import type {SizeValue} from '../utils/types';
 
 // =============================================================================
 // Module Augmentation - Register XDSCard's themeable properties
 // =============================================================================
 
-declare module '../../theme/types' {
+declare module '../theme/types' {
   interface ComponentStyles {
     card?: {
       /** Outer container styles (background, border, shadow, border-radius) */
@@ -74,10 +80,7 @@ const dynamicStyles = stylex.create({
   }),
 });
 
-/**
- * Size value type - accepts numbers (treated as pixels) or strings (e.g., '100%', '50vh')
- */
-export type SizeValue = number | string;
+export type {SizeValue} from '../utils/types';
 
 export interface XDSCardProps {
   /**
@@ -122,6 +125,9 @@ export interface XDSCardProps {
  *
  * Applies card-specific appearance (background, shadow, border-radius)
  * and sets CSS variables for child layout components.
+ *
+ * @compositionHint Use as a top-level container for elevated content.
+ * Pair with XDSLayout for structured header/content/footer layouts.
  *
  * @example
  * ```tsx

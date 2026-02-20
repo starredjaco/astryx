@@ -35,6 +35,11 @@
       "import": "./dist/Button/index.mjs",
       "require": "./dist/Button/index.js"
     },
+    "./Card": {
+      "types": "./dist/Card/index.d.ts",
+      "import": "./dist/Card/index.mjs",
+      "require": "./dist/Card/index.js"
+    },
     "./Calendar": {
       "types": "./dist/Calendar/index.d.ts",
       "import": "./dist/Calendar/index.mjs",
@@ -60,10 +65,20 @@
       "import": "./dist/Icon/index.mjs",
       "require": "./dist/Icon/index.js"
     },
+    "./Section": {
+      "types": "./dist/Section/index.d.ts",
+      "import": "./dist/Section/index.mjs",
+      "require": "./dist/Section/index.js"
+    },
     "./Selector": {
       "types": "./dist/Selector/index.d.ts",
       "import": "./dist/Selector/index.mjs",
       "require": "./dist/Selector/index.js"
+    },
+    "./Stack": {
+      "types": "./dist/Stack/index.d.ts",
+      "import": "./dist/Stack/index.mjs",
+      "require": "./dist/Stack/index.js"
     },
     "./Layout": {
       "types": "./dist/Layout/index.d.ts",

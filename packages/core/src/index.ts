@@ -1,6 +1,6 @@
 /**
  * @file index.ts
- * @input Imports from component directories (Button/, Layout/, Layer/)
+ * @input Imports from component directories (Button/, Card/, Layout/, Layer/)
  * @output Exports all public components and types for @xds/core
  * @position Package entry point; consumed by external applications
  *
@@ -13,6 +13,7 @@ export * from './Avatar';
 export * from './Badge';
 export * from './Breadcrumbs';
 export * from './Button';
+export * from './Card';
 export * from './Calendar';
 export * from './Center';
 export * from './CheckboxInput';
@@ -22,10 +23,12 @@ export * from './Divider';
 export * from './EmptyState';
 export * from './Link';
 export * from './Slider';
+export * from './Stack';
 export * from './Switch';
 export * from './DateInput';
 export * from './Field';
 export * from './Grid';
+export * from './Section';
 export * from './Selector';
 export * from './Icon';
 export * from './Text';
