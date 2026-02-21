@@ -1998,16 +1998,17 @@
     babel-plugin-syntax-hermes-parser "^0.26.0"
     esbuild "^0.24.0"
 
-"@stylexjs/nextjs-plugin@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@stylexjs/nextjs-plugin/-/nextjs-plugin-0.11.1.tgz#0137b7d2dd8751cdfcf337079e24d160c2b2c61b"
-  integrity sha512-42mJGw9W3i9cRrChv25JCMGvWhCVVcmt1EqgOgRMy3XTH45Ehd9TkwDiVmhknvSEDKxw+ib3AiSPjZ1ehZ9d6A==
+"@stylexjs/postcss-plugin@^0.17.4":
+  version "0.17.5"
+  resolved "https://registry.yarnpkg.com/@stylexjs/postcss-plugin/-/postcss-plugin-0.17.5.tgz#03ecd009409cbcb59e5083cac8a62f591ec38e16"
+  integrity sha512-GeveZXN8aDrXTSRpDM0SvCjmmY7WCfoel+lWcsf47QcJvjz5auGmh3a9LhIFLpwmAgpsVr20RyB8yxX93NaKow==
   dependencies:
     "@babel/core" "^7.26.8"
-    "@babel/plugin-syntax-flow" "^7.26.0"
-    "@babel/plugin-syntax-jsx" "^7.25.9"
-    "@babel/plugin-syntax-typescript" "^7.25.9"
-    "@stylexjs/babel-plugin" "0.11.1"
+    "@stylexjs/babel-plugin" "0.17.5"
+    fast-glob "^3.3.2"
+    glob-parent "^6.0.2"
+    is-glob "^4.0.3"
+    postcss "^8.4.49"
 
 "@stylexjs/postcss-plugin@^0.17.4":
   version "0.17.5"
