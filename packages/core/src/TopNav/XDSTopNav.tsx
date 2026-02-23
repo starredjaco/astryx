@@ -39,7 +39,8 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     gap: spacingVars['--spacing-4'],
-    flex: '1 1 auto',
+    flex: '1 1 0%',
+    minWidth: 0,
   },
   title: {
     display: 'flex',
@@ -51,7 +52,23 @@ const styles = stylex.create({
     alignItems: 'center',
     gap: spacingVars['--spacing-1'],
   },
+  centerContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacingVars['--spacing-1'],
+    flexShrink: 0,
+  },
   endContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    gap: spacingVars['--spacing-2'],
+    flex: '1 1 0%',
+    minWidth: 0,
+  },
+  // When there's no centerContent, revert to the simpler layout
+  endContentNoCenterContent: {
     display: 'flex',
     alignItems: 'center',
     gap: spacingVars['--spacing-2'],
@@ -87,6 +104,12 @@ export interface XDSTopNavProps extends Omit<
    */
   startContent?: ReactNode;
   /**
+   * Center content slot - navigation items or content centered in the nav bar.
+   * When present, the layout switches to a three-column mode where
+   * start and end sections flex equally to keep center content visually centered.
+   */
+  centerContent?: ReactNode;
+  /**
    * End content slot - typically search, icons, user profile, utility menus.
    * Positioned at the right edge of the nav bar.
    */
@@ -101,15 +124,20 @@ export interface XDSTopNavProps extends Omit<
 /**
  * Top navigation bar component for application headers.
  *
- * Uses a slot-based API with `title`, `startContent`, and `endContent` props
- * for flexible layout. Title and startContent are left-aligned, endContent
- * is right-aligned.
+ * Uses a slot-based API with `title`, `startContent`, `centerContent`, and
+ * `endContent` props for flexible layout. Title and startContent are
+ * left-aligned, centerContent is centered, and endContent is right-aligned.
+ *
+ * When `centerContent` is provided, the layout switches to a three-column
+ * mode where the left and right sections flex equally to keep the center
+ * content visually centered in the nav bar.
  *
  * Positioning is handled by the layout system (e.g. XDSAppShell applies sticky
  * behavior in auto height mode). TopNav itself is a pure content component.
  *
  * @example
  * ```tsx
+ * // Standard layout (left + right)
  * <XDSTopNav
  *   label="Main navigation"
  *   title={<XDSTopNavTitle title="My App" logo={<Logo />} />}
@@ -126,12 +154,29 @@ export interface XDSTopNavProps extends Omit<
  *     </>
  *   }
  * />
+ *
+ * // Centered layout (left + center + right)
+ * <XDSTopNav
+ *   label="Main navigation"
+ *   title={<XDSTopNavTitle title="My App" logo={<Logo />} />}
+ *   centerContent={
+ *     <>
+ *       <XDSTopNavItem label="Home" href="/" isSelected />
+ *       <XDSTopNavItem label="Products" href="/products" />
+ *     </>
+ *   }
+ *   endContent={<Avatar />}
+ * />
  * ```
  */
 export const XDSTopNav = forwardRef<HTMLElement, XDSTopNavProps>(
-  function XDSTopNav({title, startContent, endContent, label, ...props}, ref) {
+  function XDSTopNav(
+    {title, startContent, centerContent, endContent, label, ...props},
+    ref,
+  ) {
     const themeContext = useContext(ThemeContext);
     const rootOverride = themeContext?.theme.components?.topNav?.root;
+    const hasCenterContent = centerContent != null;
 
     return (
       <nav
@@ -146,8 +191,18 @@ export const XDSTopNav = forwardRef<HTMLElement, XDSTopNavProps>(
             <div {...stylex.props(styles.startContent)}>{startContent}</div>
           )}
         </div>
+        {hasCenterContent && (
+          <div {...stylex.props(styles.centerContent)}>{centerContent}</div>
+        )}
         {endContent && (
-          <div {...stylex.props(styles.endContent)}>{endContent}</div>
+          <div
+            {...stylex.props(
+              hasCenterContent
+                ? styles.endContent
+                : styles.endContentNoCenterContent,
+            )}>
+            {endContent}
+          </div>
         )}
       </nav>
     );

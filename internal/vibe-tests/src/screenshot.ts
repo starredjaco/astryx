@@ -37,7 +37,9 @@ function parseArgs(): {iteration: string; prompt?: string} {
   }
 
   if (!iteration) {
-    console.error('Usage: tsx src/screenshot.ts --iteration <id> [--prompt <promptId>]');
+    console.error(
+      'Usage: tsx src/screenshot.ts --iteration <id> [--prompt <promptId>]',
+    );
     process.exit(1);
   }
 
@@ -153,7 +155,9 @@ async function main() {
   await server.listen();
   const serverUrl = 'http://localhost:5174';
 
-  console.log(`📸 Capturing screenshots for ${promptIds.length} components...\n`);
+  console.log(
+    `📸 Capturing screenshots for ${promptIds.length} components...\n`,
+  );
 
   const browser = await chromium.launch();
 
