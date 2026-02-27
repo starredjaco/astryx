@@ -106,13 +106,10 @@ export interface XDSSpinnerProps {
 // =============================================================================
 
 /**
- * A pure spinner component for indicating loading state.
- *
- * Uses canvas rendering for crisp circles at any DPI/pixel ratio.
- * No layout or text — compose with XDSVStack + XDSText for loading states.
+ * An animated loading indicator. Available in three sizes and two color shades.
  *
  * @example
- * ```tsx
+ * ```
  * <XDSSpinner />
  * <XDSSpinner size="sm" />
  * <XDSSpinner size="lg" shade="onMedia" />
