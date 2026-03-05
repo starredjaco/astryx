@@ -351,8 +351,7 @@
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
-    },
-    "./xds.css": "./dist/xds.css"
+    }
   },
   "files": [
     "dist",
