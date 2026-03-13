@@ -72,10 +72,7 @@ const meta: Meta<typeof XDSCard> = {
       control: {type: 'range', min: 100, max: 600, step: 10},
       description: 'Minimum height in pixels',
     },
-    isFullBleed: {
-      control: 'boolean',
-      description: 'Removes internal padding',
-    },
+
   },
 };
 
@@ -306,7 +303,7 @@ export const FullBleed: Story = {
       </div>
       <div>
         <h4 {...stylex.props(styles.heading)}>Full Bleed (no padding)</h4>
-        <XDSCard width={250} isFullBleed>
+        <XDSCard width={250} padding={0}>
           <div style={{backgroundColor: 'rgba(0,100,200,0.2)', padding: 8}}>
             <p {...stylex.props(styles.text)}>Content touches card edges</p>
           </div>

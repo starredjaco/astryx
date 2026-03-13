@@ -68,10 +68,7 @@ const meta: Meta<typeof XDSSection> = {
       control: {type: 'range', min: 100, max: 600, step: 10},
       description: 'Height in pixels',
     },
-    isFullBleed: {
-      control: 'boolean',
-      description: 'Removes internal padding',
-    },
+
   },
 };
 
@@ -211,7 +208,7 @@ export const FullBleed: Story = {
       </div>
       <div>
         <h4 {...stylex.props(styles.heading)}>Full Bleed (no padding)</h4>
-        <XDSSection variant="wash" width={250} isFullBleed>
+        <XDSSection variant="wash" width={250} padding={0}>
           <div style={{backgroundColor: 'rgba(0,100,200,0.2)', padding: 8}}>
             <p {...stylex.props(styles.text)}>Content touches section edges</p>
           </div>
