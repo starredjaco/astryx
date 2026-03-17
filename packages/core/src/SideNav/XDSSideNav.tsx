@@ -24,6 +24,8 @@ import {colorVars, spacingVars} from '../theme/tokens.stylex';
 import {xdsClassName, mergeProps} from '../utils';
 import {XDSSideNavCollapseContext} from './XDSSideNavCollapseContext';
 import {XDSSideNavCollapseButton} from './XDSSideNavCollapseButton';
+import {useXDSSideNavRenderMode} from './XDSSideNavRenderContext';
+import {XDSMobileNav} from '../MobileNav/XDSMobileNav';
 
 // =============================================================================
 // Styles
@@ -108,6 +110,25 @@ const styles = stylex.create({
   stickyBottomCollapsed: {
     borderBlockStart: 'none',
     paddingBlockStart: 0,
+  },
+  // Topbar mode — horizontal layout for mobile top bar
+  topbar: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 48,
+    width: '100%',
+    paddingInline: spacingVars['--spacing-2'],
+    backgroundColor: 'inherit',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+  },
+  topbarIcons: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: spacingVars['--spacing-1'],
+    marginInlineStart: 'auto',
   },
 });
 
@@ -252,6 +273,44 @@ export function XDSSideNav({
     isCollapsible,
   };
 
+  // Render mode — when inside AppShell mobile layout, render subsets
+  const renderMode = useXDSSideNavRenderMode();
+
+  // =========================================================================
+  // Topbar mode — heading + footerIcons in a horizontal bar
+  // =========================================================================
+  if (renderMode === 'topbar') {
+    return (
+      <div
+        data-testid={testId}
+        {...mergeProps(
+          xdsClassName('side-nav', {mode: 'topbar'}),
+          stylex.props(styles.topbar, xstyle),
+          className,
+          style,
+        )}>
+        {header}
+        <div {...stylex.props(styles.topbarIcons)}>{footerIcons}</div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // Drawer mode — render inside XDSMobileNav with heading as header
+  // =========================================================================
+  if (renderMode === 'drawer') {
+    return (
+      <XDSMobileNav header={header} data-testid={testId}>
+        {topContent}
+        {children}
+        {footer}
+      </XDSMobileNav>
+    );
+  }
+
+  // =========================================================================
+  // Default mode — full sidebar
+  // =========================================================================
   const hasStickyTop = !!(header || topContent);
   const hasStickyBottom = !!(footer || footerIcons);
 

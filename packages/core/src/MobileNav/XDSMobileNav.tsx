@@ -29,6 +29,7 @@ import {colorVars, spacingVars} from '../theme/tokens.stylex';
 import {XDSButton} from '../Button';
 import {XDSIcon} from '../Icon';
 import {XDSHeading} from '../Text/XDSHeading';
+import {useXDSAppShellMobile} from '../AppShell/XDSAppShellMobileContext';
 import {xdsClassName, mergeProps} from '../utils';
 import {XDSBaseProps} from '../XDSBaseProps';
 
@@ -126,8 +127,8 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: 48,
     paddingInline: spacingVars['--spacing-2'],
-    paddingBlock: spacingVars['--spacing-2'],
     flexShrink: 0,
     borderBlockEndWidth: 1,
     borderBlockEndStyle: 'solid',
@@ -140,6 +141,7 @@ const styles = stylex.create({
     flex: 1,
     overflowY: 'auto',
     overflowX: 'hidden',
+    overscrollBehavior: 'contain',
     paddingInline: spacingVars['--spacing-2'],
     paddingBlock: spacingVars['--spacing-1'],
   },
@@ -147,8 +149,8 @@ const styles = stylex.create({
 
 const dynamicStyles = stylex.create({
   width: (w: number) => ({
-    width: `${w}px`,
-    maxWidth: '85vw',
+    width: '100vw',
+    maxWidth: `${w}px`,
   }),
 });
 
@@ -161,15 +163,19 @@ export interface XDSMobileNavProps extends Omit<XDSBaseProps, 'title'> {
   ref?: React.Ref<HTMLDialogElement>;
   /**
    * Whether the drawer is open.
+   * Inside XDSAppShell, this is managed automatically via context.
+   * Outside XDSAppShell, provide this prop to control the drawer yourself.
    */
-  isOpen: boolean;
+  isOpen?: boolean;
 
   /**
    * Callback fired when the drawer visibility changes.
    * Called with `false` when the drawer should close
    * (backdrop click, escape, close button).
+   * Inside XDSAppShell, this is managed automatically via context.
+   * Outside XDSAppShell, provide this prop to control the drawer yourself.
    */
-  onOpenChange: (isOpen: boolean) => void;
+  onOpenChange?: (isOpen: boolean) => void;
 
   /**
    * Drawer content — typically XDSSideNavSection/XDSSideNavItem, or any ReactNode.
@@ -178,20 +184,32 @@ export interface XDSMobileNavProps extends Omit<XDSBaseProps, 'title'> {
 
   /**
    * Optional title shown at the top of the drawer.
+   * For simple text headers. Use `header` for custom content.
    */
   title?: string;
 
   /**
+   * Custom header content rendered in the header area next to the close button.
+   * Replaces `title` when provided. Use for logos, SideNavHeading, search bars, etc.
+   */
+  header?: ReactNode;
+
+  /**
    * Width of the drawer in pixels.
-   * @default 280
+   * @default 320
    */
   width?: number;
 
   /**
    * Which side the drawer slides from.
-   * @default 'start'
+   * @default 'end'
    */
   side?: 'start' | 'end';
+
+  /**
+   * Accessible label for the drawer. Falls back to title, then 'Navigation'.
+   */
+  label?: string;
 
   /**
    * Test ID for the root element.
@@ -214,33 +232,54 @@ export interface XDSMobileNavProps extends Omit<XDSBaseProps, 'title'> {
  * which provides built-in focus trapping, body scroll lock, and `::backdrop`.
  * No manual z-index needed — the browser's top layer handles stacking.
  *
+ * When used inside XDSAppShell, `isOpen` and `onOpenChange` are managed
+ * automatically via context. When used standalone, provide them as props.
+ *
  * @example
  * ```
- * <XDSMobileNav
- *   isOpen={isOpen}
- *   onOpenChange={(open) => setIsOpen(open)}
- *   title="Navigation">
- *   <XDSSideNavSection title="Main">
- *     <XDSSideNavItem label="Home" icon={HomeIcon} isSelected href="/" />
- *     <XDSSideNavItem label="Settings" icon={SettingsIcon} href="/settings" />
- *   </XDSSideNavSection>
+ * // Inside AppShell — state managed by AppShell
+ * <XDSAppShell mobileNav={
+ *   <XDSMobileNav title="Navigation">
+ *     <XDSSideNavItem label="Home" href="/" />
+ *   </XDSMobileNav>
+ * }>
+ *
+ * // Standalone — manage state yourself
+ * <XDSMobileNav isOpen={isOpen} onOpenChange={setIsOpen} title="Navigation">
+ *   <XDSSideNavItem label="Home" href="/" />
  * </XDSMobileNav>
  * ```
  */
 export function XDSMobileNav({
-  isOpen,
-  onOpenChange,
+  isOpen: isOpenProp,
+  onOpenChange: onOpenChangeProp,
   children,
   title,
-  width = 280,
-  side = 'start',
+  header,
+  width = 320,
+  side = 'end',
+  label,
   'data-testid': testId,
   xstyle,
   className,
   style,
   ref,
 }: XDSMobileNavProps) {
+  // Read from AppShell context as fallback
+  const appShellMobile = useXDSAppShellMobile();
+  const isOpen = isOpenProp ?? appShellMobile.isMobileNavOpen;
+  const onOpenChange =
+    onOpenChangeProp ??
+    ((open: boolean) => {
+      if (open) {
+        appShellMobile.openMobileNav();
+      } else {
+        appShellMobile.closeMobileNav();
+      }
+    });
+
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   // Merge refs
   const setRefs = useCallback(
@@ -257,19 +296,35 @@ export function XDSMobileNav({
   );
 
   // Open/close the dialog via showModal()/close()
+  // close() is delayed so the slide-out transition can play.
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
+
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
 
     if (isOpen) {
       if (!dialog.open) {
         dialog.showModal();
       }
-    } else {
-      if (dialog.open) {
+    } else if (dialog.open) {
+      const duration = window.matchMedia('(prefers-reduced-motion: reduce)')
+        .matches
+        ? 10
+        : 250;
+      closeTimeoutRef.current = setTimeout(() => {
         dialog.close();
-      }
+      }, duration);
     }
+
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
   }, [isOpen]);
 
   // Handle native cancel event (Escape key) — prevent default and route through onOpenChange
@@ -299,7 +354,7 @@ export function XDSMobileNav({
     <dialog
       ref={setRefs}
       data-testid={testId}
-      aria-label={title ?? 'Navigation'}
+      aria-label={label ?? title ?? 'Navigation'}
       onClick={handleDialogClick}
       onCancel={handleCancel}
       {...mergeProps(
@@ -311,7 +366,6 @@ export function XDSMobileNav({
           xstyle,
         ),
       )}>
-      xstyle, className, style,
       {/* Drawer panel */}
       <div
         {...stylex.props(
@@ -322,9 +376,14 @@ export function XDSMobileNav({
           !isStart && styles.drawerEnd,
           !isStart && isOpen && styles.drawerEndOpen,
         )}>
-        {/* Header with optional title and close button */}
-        <div {...stylex.props(styles.header, !title && styles.headerNoTitle)}>
-          {title && <XDSHeading level={2}>{title}</XDSHeading>}
+        {/* Header — custom content or title + close button */}
+        <div
+          {...stylex.props(
+            styles.header,
+            !title && !header && styles.headerNoTitle,
+          )}>
+          {header ??
+            (title ? <XDSHeading level={2}>{title}</XDSHeading> : null)}
           <XDSButton
             variant="ghost"
             label="Close navigation"
