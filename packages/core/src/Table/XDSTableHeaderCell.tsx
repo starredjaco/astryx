@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTableHeaderCell.tsx
  * @input React, StyleX, XDSTableContext, theme tokens
@@ -9,7 +11,6 @@
  * - /packages/core/src/Table/index.ts
  */
 
-'use client';
 
 import {useContext, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

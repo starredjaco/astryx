@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSListContext.tsx
  * @input Uses React createContext
@@ -5,7 +7,6 @@
  * @position Internal context; consumed by XDSList.tsx and XDSListItem.tsx
  */
 
-'use client';
 
 import {createContext} from 'react';
 

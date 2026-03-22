@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useTruncation.ts
  * @input Uses React hooks, ResizeObserver
@@ -8,7 +10,6 @@
  * - /packages/core/src/Text/Text.doc.mjs
  */
 
-'use client';
 
 import {useCallback, useRef, useState, type RefCallback} from 'react';
 

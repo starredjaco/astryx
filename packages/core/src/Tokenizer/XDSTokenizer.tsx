@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTokenizer.tsx
  * @input Uses React, XDSBaseTypeahead, XDSField, XDSToken
@@ -10,7 +12,6 @@
  * - /apps/storybook/stories/Tokenizer.stories.tsx
  */
 
-'use client';
 
 import React, {
   useCallback,

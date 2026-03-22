@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTooltip.tsx
  * @input Uses React, useXDSTooltip hook
@@ -9,7 +11,6 @@
  * - /apps/storybook/stories/Tooltip.stories.tsx
  */
 
-'use client';
 
 import React, {
   useCallback,

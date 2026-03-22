@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSCalendar.tsx
  * @input Uses React useState, useMemo, useCallback, hooks
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Calendar.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {
   useState,

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useOverflow.ts
  * @input Uses React useState, useLayoutEffect, useCallback, useRef
@@ -12,7 +14,6 @@
  * - /packages/core/src/hooks/index.ts
  */
 
-'use client';
 
 import {useState, useLayoutEffect, useCallback, useRef} from 'react';
 

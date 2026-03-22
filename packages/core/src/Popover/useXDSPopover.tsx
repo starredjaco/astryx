@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useXDSPopover.tsx
  * @input Uses useXDSLayer, useFocusTrap, React hooks
@@ -11,7 +13,6 @@
  * - /packages/core/src/Popover/index.ts
  */
 
-'use client';
 
 import React, {
   useCallback,

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSHeading.tsx
  * @input Uses React, HTMLAttributes, ReactNode
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Text.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {lazy, Suspense, useCallback, useRef, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

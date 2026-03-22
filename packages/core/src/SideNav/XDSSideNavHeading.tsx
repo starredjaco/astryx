@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSideNavHeading.tsx
  * @input Uses React, useRef, useCallback, ReactNode, StyleX, useXDSPopover
@@ -14,7 +16,6 @@
  * - /apps/storybook/stories/SideNav.stories.tsx
  */
 
-'use client';
 
 import {useCallback, useRef, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

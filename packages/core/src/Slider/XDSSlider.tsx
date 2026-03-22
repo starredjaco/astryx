@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSlider.tsx
  * @input Uses React, useId, useRef, useCallback, XDSField, XDSTooltip
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Slider.stories.tsx
  */
 
-'use client';
 
 import {
   useId,

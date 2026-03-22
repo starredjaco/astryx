@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTopNavMegaMenu.tsx
  * @input Uses React, StyleX, useXDSPopover (Popover API + CSS anchor positioning)
@@ -18,7 +20,6 @@
  * - /packages/core/src/TopNav/index.ts
  */
 
-'use client';
 
 import {useCallback, useEffect, useRef, useState, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

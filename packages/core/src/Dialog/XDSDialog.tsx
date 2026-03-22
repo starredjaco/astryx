@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSDialog.tsx
  * @input Uses React, DialogHTMLAttributes, ReactNode
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Dialog.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useEffect, useRef, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

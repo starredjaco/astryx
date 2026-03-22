@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSAppShell.tsx
  * @input Uses React, XDSLayout, XDSLayoutHeader, XDSLayoutPanel, XDSLayoutContent, StyleX
@@ -13,7 +15,6 @@
  * - /apps/storybook/stories/AppShell.stories.tsx
  */
 
-'use client';
 
 import {
   isValidElement,

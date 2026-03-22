@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useXDSCollapsible.ts
  * @input Uses React useState/useContext, CollapsibleGroupContext
@@ -17,7 +19,6 @@
  * NOTE: Public hooks use the `useXDS` prefix per XDS naming conventions.
  */
 
-'use client';
 
 import {useState, useContext} from 'react';
 import {CollapsibleGroupContext} from './XDSCollapsibleGroupContext';

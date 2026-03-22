@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useXDSTooltip.tsx
  * @input Uses useXDSLayer, React hooks
@@ -8,7 +10,6 @@
  * - /packages/core/src/Tooltip/index.ts
  */
 
-'use client';
 
 import {
   useCallback,

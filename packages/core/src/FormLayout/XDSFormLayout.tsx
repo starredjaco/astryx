@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSFormLayout.tsx
  * @input Uses React, XDSFormLayoutContext, StyleX
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/FormLayout.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useMemo, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

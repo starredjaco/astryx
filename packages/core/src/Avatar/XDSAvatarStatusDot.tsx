@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSAvatarStatusDot.tsx
  * @input Uses React, StyleX, theme tokens, and XDSAvatarSizeContext
@@ -10,7 +12,6 @@
  * - /apps/storybook/stories/Avatar.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useContext, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

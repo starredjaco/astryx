@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTextArea.tsx
  * @input Uses React, useId, ChangeEvent, ClipboardEvent, XDSField, XDSIcon
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/TextArea.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {
   useId,

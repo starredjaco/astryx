@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTypeahead.tsx
  * @input Uses React, XDSBaseTypeahead, XDSField, XDSToken
@@ -14,7 +16,6 @@
  * - /apps/storybook/stories/Typeahead.stories.tsx
  */
 
-'use client';
 
 import React, {useCallback, useId, useRef, useState} from 'react';
 import * as stylex from '@stylexjs/stylex';

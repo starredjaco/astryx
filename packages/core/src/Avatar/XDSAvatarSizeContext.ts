@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSAvatarSizeContext.ts
  * @input Uses React createContext
@@ -8,7 +10,6 @@
  * - /packages/core/src/Avatar/Avatar.doc.mjs
  */
 
-'use client';
 
 import {createContext} from 'react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSpinner.tsx
  * @input Uses React, StyleX, canvas rendering
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Spinner.stories.tsx
  */
 
-'use client';
 
 import {useEffect, useRef} from 'react';
 import * as stylex from '@stylexjs/stylex';

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSLayout.tsx
  * @input Uses React, stack/stackItem utilities, XDSLayoutAreaContext, XDSLayoutSlotsContext
@@ -13,7 +15,6 @@
  * - /apps/storybook/stories/Layout.stories.tsx
  */
 
-'use client';
 
 import {type ReactNode, useMemo} from 'react';
 import * as stylex from '@stylexjs/stylex';

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTreeListItem.tsx
  * @input Uses React, StyleX, theme tokens, XDSTreeListBranches
@@ -9,7 +11,6 @@
  * - /packages/core/src/TreeList/XDSTreeList.tsx
  */
 
-'use client';
 
 import {useId, useMemo, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

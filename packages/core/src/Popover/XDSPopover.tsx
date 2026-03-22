@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSPopover.tsx
  * @input Uses React, useXDSPopover hook
@@ -12,7 +14,6 @@
  * - /apps/storybook/stories/Popover.stories.tsx
  */
 
-'use client';
 
 import React, {
   useCallback,

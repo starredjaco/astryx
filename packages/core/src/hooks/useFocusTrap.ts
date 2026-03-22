@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useFocusTrap.ts
  * @input Uses React useCallback, useEffect, useRef
@@ -11,7 +13,6 @@
  * - /packages/core/src/hooks/index.ts
  */
 
-'use client';
 
 import {useCallback, useEffect, useRef} from 'react';
 
