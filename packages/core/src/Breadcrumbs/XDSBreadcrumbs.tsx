@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSBreadcrumbs.tsx
  * @input Uses React, Children, createContext, stylex, theme tokens
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Breadcrumbs.stories.tsx
  */
 
-'use client';
 
 import {Children, isValidElement, createContext, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

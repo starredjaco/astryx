@@ -1,10 +1,11 @@
+'use client';
+
 /**
  * @file hooks.ts
  * @output Hooks for XDSSelector
  * @position Internal hooks; used by XDSSelector.tsx
  */
 
-'use client';
 
 import {useCallback, useLayoutEffect, useRef, useState} from 'react';
 import type {RefObject} from 'react';

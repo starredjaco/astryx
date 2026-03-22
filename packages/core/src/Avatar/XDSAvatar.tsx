@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSAvatar.tsx
  * @input Uses React, HTMLAttributes, ReactNode, useState
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Avatar.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useState, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

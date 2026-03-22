@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSelector.tsx
  * @input Uses React, StyleX, useXDSLayer, XDSIcon
@@ -9,7 +11,6 @@
  * - /packages/core/src/Selector/index.ts
  */
 
-'use client';
 
 import React, {
   useCallback,

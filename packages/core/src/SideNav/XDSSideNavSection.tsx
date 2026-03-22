@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSideNavSection.tsx
  * @input Uses React, StyleX
@@ -13,7 +15,6 @@
  * - /apps/storybook/stories/SideNav.stories.tsx
  */
 
-'use client';
 
 import {useId, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

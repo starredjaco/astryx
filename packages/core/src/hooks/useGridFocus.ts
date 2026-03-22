@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useGridFocus.ts
  * @input Uses React useCallback, useRef
@@ -9,7 +11,6 @@
  * - /packages/core/src/hooks/useGridFocus.test.ts
  */
 
-'use client';
 
 import {useCallback, useRef} from 'react';
 

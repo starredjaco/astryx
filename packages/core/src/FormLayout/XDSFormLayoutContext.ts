@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSFormLayoutContext.ts
  * @input Uses React createContext
@@ -8,7 +10,6 @@
  * - /packages/core/src/FormLayout/README.md
  */
 
-'use client';
 
 import {createContext} from 'react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSMoreMenu.tsx
  * @input Uses React, StyleX, useXDSLayer, XDSButton, getIcon, XDSDropdownMenuItem, XDSDivider
@@ -14,7 +16,6 @@
  * - /apps/storybook/stories/MoreMenu.stories.tsx
  */
 
-'use client';
 
 import {
   useCallback,

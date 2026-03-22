@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useCalendarNavigation.ts
  * @input Uses React useState, useMemo, useCallback
@@ -8,7 +10,6 @@
  * - /packages/core/src/Calendar/hooks/index.ts
  */
 
-'use client';
 
 import {useState, useMemo, useCallback} from 'react';
 import type {ISODateString} from '../XDSCalendar';

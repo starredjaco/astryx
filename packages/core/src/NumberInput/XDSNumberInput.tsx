@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSNumberInput.tsx
  * @input Uses React, useId, useState, useMemo, useCallback, XDSField, XDSIcon
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/NumberInput.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {
   useId,

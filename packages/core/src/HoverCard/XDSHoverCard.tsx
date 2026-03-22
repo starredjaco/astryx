@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSHoverCard.tsx
  * @input Uses React, useXDSHoverCard hook
@@ -10,7 +12,6 @@
  * - /apps/storybook/stories/HoverCard.stories.tsx
  */
 
-'use client';
 
 import React, {
   useCallback,

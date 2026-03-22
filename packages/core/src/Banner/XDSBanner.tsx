@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSBanner.tsx
  * @input Uses ReactuseState, @heroicons/react/24/solid icons, XDSButton, XDSIcon, StyleX
@@ -17,7 +19,6 @@
  * - /apps/storybook/stories/Banner.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useState, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

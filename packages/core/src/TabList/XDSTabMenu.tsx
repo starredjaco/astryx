@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTabMenu.tsx
  * @input Uses React, StyleX, useXDSLayer, XDSTabListContext
@@ -10,7 +12,6 @@
  * - /packages/core/src/TabList/XDSTabList.test.tsx
  */
 
-'use client';
 
 import React, {useCallback, useId} from 'react';
 import * as stylex from '@stylexjs/stylex';

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useXDSHoverCard.ts
  * @input Uses useXDSLayer, React hooks
@@ -8,7 +10,6 @@
  * - /packages/core/src/HoverCard/index.ts
  */
 
-'use client';
 
 import {
   useCallback,

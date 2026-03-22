@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSBaseTypeahead.tsx
  * @input Uses React, StyleX, useXDSLayer, XDSTypeaheadItem
@@ -13,7 +15,6 @@
  * - /packages/core/src/Typeahead/index.ts
  */
 
-'use client';
 
 import React, {
   useCallback,

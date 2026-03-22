@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useMediaQuery.ts
  * @input Uses React useState, useEffect
@@ -10,7 +12,6 @@
  * - /packages/core/src/hooks/index.ts
  */
 
-'use client';
 
 import {useState, useEffect} from 'react';
 

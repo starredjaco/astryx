@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSLayoutAreaContext.ts
  * @input Uses React createContext
@@ -8,7 +10,6 @@
  * - /packages/core/src/Layout/Layout.doc.mjs
  */
 
-'use client';
 
 import {createContext} from 'react';
 

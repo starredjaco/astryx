@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSPowerSearch.tsx
  * @input PowerSearchConfig, filters, onChange
@@ -9,7 +11,6 @@
  * - /packages/core/src/PowerSearch/XDSPowerSearch.doc.mjs
  */
 
-'use client';
 
 import React, {
   useCallback,

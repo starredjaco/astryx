@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSLinkProvider.tsx
  * @input React, XDSLinkContext, XDSLinkComponentType
@@ -20,7 +22,6 @@
  * - /packages/core/src/Link/Link.doc.mjs
  */
 
-'use client';
 
 import {useMemo, type ReactNode} from 'react';
 import {XDSLinkContext} from './XDSLinkContext';

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSProgressBar.tsx
  * @input Uses React, useId, stylex, color/spacing/radius/transition tokens
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/ProgressBar.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {useId} from 'react';
 import * as stylex from '@stylexjs/stylex';

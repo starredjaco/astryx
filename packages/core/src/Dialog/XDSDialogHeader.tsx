@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSDialogHeader.tsx
  * @input Uses React, useEffect, useRef, XDSLayoutHeader, XDSButton, XDSIcon, XDSHeading, XDSText
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/Dialog.stories.tsx
  */
 
-'use client';
 
 import {useEffect, useRef, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';

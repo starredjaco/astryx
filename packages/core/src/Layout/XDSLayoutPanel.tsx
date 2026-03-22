@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSLayoutPanel.tsx
  * @input Uses React StyleX, XDSLayoutAreaContext, XDSLayoutSlotsContext
@@ -10,7 +12,6 @@
  * - /apps/storybook/stories/Layout.stories.tsx
  */
 
-'use client';
 
 import type {AriaRole, ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

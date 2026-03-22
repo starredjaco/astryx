@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSTimeInput.tsx
  * @input Uses React, useId, useState, useEffect, useCallback, useRef, XDSField, XDSIcon
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/TimeInput.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {
   useId,

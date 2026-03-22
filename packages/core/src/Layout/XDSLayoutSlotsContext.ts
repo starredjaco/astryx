@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSLayoutSlotsContext.ts
  * @input Uses React createContext
@@ -9,7 +11,6 @@
  * - /packages/core/src/Layout/XDSLayout/index.ts
  */
 
-'use client';
 
 import {createContext} from 'react';
 

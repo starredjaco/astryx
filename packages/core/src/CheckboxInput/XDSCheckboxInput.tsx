@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSCheckboxInput.tsx
  * @input Uses React, useId, ChangeEvent, XDSFieldLabel, XDSFieldStatus, XDSIconType, XDSInputStatus
@@ -11,7 +13,6 @@
  * - /apps/storybook/stories/CheckboxInput.stories.tsx (storybook stories)
  */
 
-'use client';
 
 import {
   useId,

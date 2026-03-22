@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useXDSLinkComponent.ts
  * @input React useContext, XDSLinkContext, XDSLinkComponentType
@@ -11,7 +13,6 @@
  * - /packages/core/src/Link/Link.doc.mjs
  */
 
-'use client';
 
 import {useContext} from 'react';
 import {XDSLinkContext} from './XDSLinkContext';

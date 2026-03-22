@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file useListFocus.ts
  * @input Uses React useCallback, useRef
@@ -8,7 +10,6 @@
  * - /packages/core/src/hooks/index.ts
  */
 
-'use client';
 
 import {useCallback, useRef} from 'react';
 

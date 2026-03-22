@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSButton.tsx
  * @input Uses React, ButtonHTMLAttributes, ReactNode
@@ -13,7 +15,6 @@
  * Last synced props: label, variant, size, isDisabled, isLoading, onClickAction, icon, children, tooltip, endSlot
  */
 
-'use client';
 
 import {useTransition, type ReactElement, type ReactNode} from 'react';
 import type {XDSBaseProps} from '../XDSBaseProps';

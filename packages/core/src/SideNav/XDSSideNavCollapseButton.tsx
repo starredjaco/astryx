@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * @file XDSSideNavCollapseButton.tsx
  * @input Uses React, StyleX, XDSSideNavCollapseContext, getIcon
@@ -12,7 +14,6 @@
  * - /packages/core/src/SideNav/index.ts
  */
 
-'use client';
 
 import {useCallback, type ReactNode} from 'react';
 import * as stylex from '@stylexjs/stylex';
