@@ -1,10 +1,9 @@
 /** @type {import('../../../../../core/src/docs-types').TemplateDoc} */
 export const doc = {
   type: 'block',
-  name: 'ChatMessage',
-  description: 'A user multi-bubble group with delivery status and an assistant ghost response with avatar, name, timestamp, and model info.',
+  name: 'ChatMessage — Multi-Bubble',
+  description: 'Grouped bubbles using the group prop for corner radius reduction. Use first, middle, and last to visually connect related bubbles from the same sender.',
   isReady: true,
-  isShowcase: true,
-  aspectRatio: 4 / 3,
+  aspectRatio: 1,
   componentsUsed: ['Chat', 'ChatMessage', 'ChatMessageBubble', 'ChatMessageMetadata', 'Avatar', 'Timestamp', 'Text', 'Layout'],
 };
