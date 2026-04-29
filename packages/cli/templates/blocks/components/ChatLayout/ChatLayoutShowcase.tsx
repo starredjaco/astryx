@@ -6,33 +6,38 @@ import {
   XDSChatMessage,
   XDSChatMessageBubble,
   XDSChatComposer,
+  XDSChatTokenizedText,
 } from '@xds/core/Chat';
-import {XDSMarkdown} from '@xds/core/Markdown';
+import {XDSAvatar} from '@xds/core/Avatar';
+import {XDSVStack} from '@xds/core/Stack';
+
+const TOKENS = [{value: '/review', label: '/review', variant: 'blue' as const}];
 
 export default function ChatLayoutShowcase() {
   return (
-    <div style={{height: 500, display: 'flex', flexDirection: 'column'}}>
+    <XDSVStack width={450}>
       <XDSChatLayout
         composer={
           <XDSChatComposer
             onSubmit={() => {}}
-            placeholder="Ask about the codebase..."
+            placeholder="Ask something..."
           />
         }>
         <XDSChatMessageList>
           <XDSChatMessage sender="user">
             <XDSChatMessageBubble>
-              Can you review the Button component?
+              <XDSChatTokenizedText tokens={TOKENS}>
+                /review the changes in this file
+              </XDSChatTokenizedText>
             </XDSChatMessageBubble>
           </XDSChatMessage>
           <XDSChatMessage sender="assistant">
-            <XDSMarkdown density="compact">{`The Button component looks solid. A few suggestions:
-
-- Use the **theme token** for border-radius instead of a hardcoded value
-- The focus ring meets **WCAG 2.4.7** requirements`}</XDSMarkdown>
+            <XDSChatMessageBubble variant="ghost">
+              Reading the file now...
+            </XDSChatMessageBubble>
           </XDSChatMessage>
         </XDSChatMessageList>
       </XDSChatLayout>
-    </div>
+    </XDSVStack>
   );
 }
