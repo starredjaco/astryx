@@ -345,10 +345,10 @@ export interface XDSPowerSearchProps {
    * Accepts a ReactNode (e.g. `<XDSIcon icon={SearchIcon} />`) or an SVG icon component directly.
    */
   startIcon?: ReactNode | XDSIconType;
-  /** Focus callback. */
-  onFocus?: () => void;
-  /** Blur callback. */
-  onBlur?: () => void;
+  /** Fires when focus enters the search input from outside. */
+  onFocus?: (e: React.FocusEvent) => void;
+  /** Fires when focus leaves the search input entirely. */
+  onBlur?: (e: React.FocusEvent) => void;
   /** Validation status. */
   status?: XDSInputStatus;
   /** Max width for dropdown menu. */
@@ -843,6 +843,8 @@ export function XDSPowerSearch({
           hasEntriesOnFocus
           debounceMs={0}
           status={status}
+          onFocus={onFocus}
+          onBlur={onBlur}
           xstyle={xstyle}
           className={className}
           style={style}
