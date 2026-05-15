@@ -111,7 +111,7 @@ export function sizeCanvas(
  * Call from a useEffect. Returns a cleanup function.
  */
 export function mountCanvasOverSVG(
-  svgMarker: SVGElement,
+  svgMarker: SVGGraphicsElement,
   canvas: HTMLCanvasElement,
   width: number,
   height: number,
