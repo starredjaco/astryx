@@ -46,6 +46,12 @@ const styles = stylex.create({
     position: 'relative',
     width: '100%',
     zIndex: 1,
+    // Locally retint the `muted` surface to the page body color so this CTA
+    // card blends into the body (reads as a content group shaped by padding +
+    // corners, not a colored surface). Scoped to this card only — overriding
+    // --color-background-muted theme-wide would also recolor code blocks,
+    // table rows, sliders, etc. that rely on the default subtle muted tint.
+    '--color-background-muted': 'var(--color-background-body)',
     // 96px / 80px — beyond --spacing-12 (48px), so expressed as
     // calc() over spacing tokens (2× spacing-12, 2× spacing-10)
     // rather than as literals so the rhythm scales with any
@@ -255,7 +261,7 @@ export function DiscoverShowcase() {
             spread ? styles.floatBottomRightEnd : styles.floatBottomRightStart,
           )}
         />
-        <Card variant="gray" padding={0} xstyle={styles.card}>
+        <Card variant="muted" padding={0} xstyle={styles.card}>
           <VStack gap={6} align="center" xstyle={styles.cardContent}>
             <VStack gap={6} align="center">
               <Heading level={2} type="display-1" color="primary">

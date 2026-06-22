@@ -21,6 +21,11 @@ import {BRAND_BLUE} from '@/constants';
 // Sentinel for the docsite's local brand theme (not an @xds/theme-* package).
 const ASTRYX = 'astryx';
 
+// Shared XDS asset CDN. The per-theme reel cards pull the same product photos
+// the /themes showcase uses (see themeShowcaseContent.ts) so the hero and the
+// gallery stay in sync.
+const XDS_CDN = 'https://lookaside.facebook.com/assets/xds_oss';
+
 export interface HeroThemeContent {
   /** Product card (image + title/description + price). */
   product: {
@@ -89,9 +94,8 @@ export interface HeroThemeSlide {
 // The curated reel — these themes, in this order. Edit here to add/remove.
 const REEL_THEMES: ReadonlyArray<string> = [
   ASTRYX,
-  '@xds/theme-neutral',
-  '@xds/theme-butter',
   '@xds/theme-matcha',
+  '@xds/theme-butter',
   '@xds/theme-gothic',
   '@xds/theme-y2k',
 ];
@@ -99,23 +103,23 @@ const REEL_THEMES: ReadonlyArray<string> = [
 // Per-theme card content, keyed by theme name (or the ASTRYX sentinel).
 const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   [ASTRYX]: {
+    // Product photos reuse the Neutral theme's image set (watch / headphones /
+    // backpack) now that Neutral is no longer a standalone reel slide.
     product: {
-      image: '/neutral/preview-headphones.png',
-      title: 'Studio headphones',
-      description: 'Quiet, considered sound for deep focus.',
-      price: '$180',
+      image: '/neutral/preview-watch.png',
+      title: 'Minimalist watch',
+      description: 'Clean design, everyday durability.',
+      price: '$240',
     },
     feature: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/light-product-1.png',
-      title: 'Ceramic mug',
-      price: '$32',
+      image: '/neutral/preview-headphones.png',
+      title: 'Wireless headphones',
+      price: '$180',
     },
     mini: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/light-product-1.png',
-      title: 'Speckled mug',
-      description: 'Hand-thrown stoneware.',
+      image: '/neutral/preview-backpack.png',
+      title: 'Canvas backpack',
+      description: 'Water-resistant.',
     },
     pills: {leading: 'Limited time', trailing: 'Free shipping'},
     chatPrompt: 'How can I help?',
@@ -154,21 +158,20 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@xds/theme-butter': {
     product: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/light-product-1.png',
-      title: 'Speckled mug',
-      description: 'Warm stoneware for slow mornings.',
-      price: '$32',
+      image: `${XDS_CDN}/Butter-Croissant.png`,
+      title: 'Butter croissant',
+      description: 'Flaky, laminated layers baked golden each morning.',
+      price: '$6',
     },
     feature: {
-      image: '/theme-butter-preview.png',
-      title: 'Buttermilk waffles',
-      price: '$14',
+      image: `${XDS_CDN}/Butter-Waffle.png`,
+      title: 'Belgian waffle',
+      price: '$8',
     },
     mini: {
-      image: '/theme-butter-preview.png',
-      title: 'Maple waffles',
-      description: 'Served warm.',
+      image: `${XDS_CDN}/Butter-Pancake.png`,
+      title: 'Buttermilk pancakes',
+      description: 'Stacked tall with melting butter.',
     },
     pills: {leading: 'Limited time', trailing: 'Free shipping'},
     chatPrompt: 'How can I help?',
@@ -176,21 +179,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@xds/theme-matcha': {
     product: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/matcha-product-1.png',
-      title: 'Sweet vanilla matcha',
-      description: 'Vanilla matcha with whole milk or oat milk.',
+      image: `${XDS_CDN}/matcha-product-1.png`,
+      title: 'Iced matcha latte',
+      description: 'Stone-ground ceremonial matcha over cold milk.',
       price: '$6',
     },
     feature: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/matcha-product-4.png',
-      title: 'Ube matcha',
+      image: `${XDS_CDN}/matcha-product-2.png`,
+      title: 'Strawberry matcha',
       price: '$7',
     },
     mini: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/matcha-product-4.png',
+      image: `${XDS_CDN}/matcha-product-4.png`,
       title: 'Ube matcha',
       description: 'Ube and cream matcha.',
     },
@@ -205,20 +205,20 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@xds/theme-gothic': {
     product: {
-      image: '/theme-gothic-preview.png',
-      title: 'Onyx pendant',
-      description: 'Blackened silver with a matte finish.',
-      price: '$96',
+      image: `${XDS_CDN}/Gothic-1.png`,
+      title: 'Dried sea holly',
+      description: 'A single preserved thistle stem with a steely bloom.',
+      price: '$24',
     },
     feature: {
-      image: '/theme-gothic-preview.png',
-      title: 'Midnight cuff',
-      price: '$120',
+      image: `${XDS_CDN}/Gothic-2.png`,
+      title: 'Garden rose',
+      price: '$18',
     },
     mini: {
-      image: '/theme-gothic-preview.png',
-      title: 'Raven ring',
-      description: 'Hand-forged band.',
+      image: `${XDS_CDN}/Gothic-3.png`,
+      title: 'Lilac ranunculus',
+      description: 'Layered petals in a soft mauve.',
     },
     pills: {leading: 'Limited time', trailing: 'Free shipping'},
     chatPrompt: 'How can I help?',
@@ -226,23 +226,20 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@xds/theme-y2k': {
     product: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/colorful-product-2.png',
-      title: 'Bubbly charm',
-      description: 'A glossy little throwback keepsake.',
+      image: `${XDS_CDN}/Y2K-Phone.png`,
+      title: 'Holo flip phone',
+      description: 'Iridescent clamshell with a rainbow screen.',
       price: '$18',
     },
     feature: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/colorful-product-1.png',
-      title: 'Puppy keychain',
+      image: `${XDS_CDN}/Y2K-Star.png`,
+      title: 'Glow star set',
       price: '$12',
     },
     mini: {
-      image:
-        'https://lookaside.facebook.com/assets/xds_oss/colorful-product-1.png',
-      title: 'Puppy keychain',
-      description: 'Plush + chrome ring.',
+      image: `${XDS_CDN}/Y2K-Butterfly.png`,
+      title: 'Glitter butterfly',
+      description: 'Sparkly stick-on in pastel chrome.',
     },
     pills: {leading: 'Limited time', trailing: 'Free shipping'},
     chatPrompt: 'How can I help?',

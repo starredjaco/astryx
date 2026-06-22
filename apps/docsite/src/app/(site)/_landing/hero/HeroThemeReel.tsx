@@ -124,17 +124,23 @@ const styles = stylex.create({
     zIndex: 0,
   },
   // Per-slide body fill behind the hero (resolves to the active theme's body
-  // color). Covers the band + a page-radius extra so the color sits behind the
-  // showcase's rounded top corners (no cream notch on dark themes like Gothic).
+  // color). Covers the band + an extra strip so the color sits behind the
+  // showcase's rounded top corners (no notch showing the docsite body color).
+  //
+  // The extra MUST match the showcase overlay's corner radius, which is the
+  // docsite (Astryx) --radius-page = 32px. We can't read --radius-page here
+  // because this fill renders inside <XDSTheme theme={active}>, where the
+  // active theme overrides it — e.g. Y2K sets --radius-page: 0, which left the
+  // fill 32px short and exposed the docsite body color in the rounded corners.
+  // Hence a fixed 32px tied to the overlay radius rather than the theme token.
   themeFill: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     height: {
-      default:
-        'calc(var(--hero-content-height, 760px) + var(--radius-page, 24px))',
-      '@media (min-width: 1024px)': 'calc(760px + var(--radius-page, 24px))',
+      default: 'calc(var(--hero-content-height, 760px) + 32px)',
+      '@media (min-width: 1024px)': 'calc(760px + 32px)',
     },
     backgroundColor: 'var(--color-background-body)',
     pointerEvents: 'none',
@@ -163,7 +169,7 @@ const styles = stylex.create({
     width: 'min(1200px, 100vw)',
     height: 1050,
     pointerEvents: 'none',
-    opacity: 0.5,
+    opacity: 0.7,
     transition: 'background-image 800ms ease',
     filter: 'blur(60px)',
     backgroundImage:
