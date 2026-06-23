@@ -11,6 +11,7 @@ import {Section} from '@xds/core/Section';
 import {TabList, Tab} from '@xds/core/TabList';
 import {Carousel} from '@xds/core/Carousel';
 import {GITHUB_REPO} from '../constants';
+import {layout} from '../layout.stylex';
 
 function linkifyPRs(markdown: string): string {
   return markdown.replace(/(?<!\[)#(\d+)/g, `[#$1](${GITHUB_REPO}/pull/$1)`);
@@ -71,7 +72,7 @@ export function ChangelogView({
   const active = changelogs.find(c => c.pkg === activeTab);
 
   return (
-    <Section maxWidth={800} padding={6} xstyle={styles.section}>
+    <Section maxWidth={layout.proseMaxWidth} padding={6} xstyle={styles.section}>
       <VStack gap={8}>
         <VStack gap={4}>
           <Heading level={1} type="display-1">
