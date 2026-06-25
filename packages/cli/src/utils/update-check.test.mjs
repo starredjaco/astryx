@@ -14,7 +14,7 @@ let tmpDir;
 const originalEnv = {};
 
 beforeEach(() => {
-  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'xds-update-check-'));
+  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'astryx-update-check-'));
   // Save and clear env
   originalEnv.ASTRYX_LATEST_VERSION = process.env.ASTRYX_LATEST_VERSION;
   delete process.env.ASTRYX_LATEST_VERSION;
