@@ -51,7 +51,7 @@ export const docs = {
           name: 'size',
           type: "'sm' | 'md' | 'lg'",
           description:
-            'Size of the toolbar. Controls minimum height and coordinates with Button, TextInput, TabList, and Selector — children inherit this size as their default via SizeContext.',
+            'Size of the toolbar. Controls minimum height and coordinates with Button, TextInput, TabList, and Selector; children inherit this size as their default via SizeContext.',
           default: "'md'",
         },
         {

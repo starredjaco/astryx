@@ -78,7 +78,7 @@ export const docs = {
       name: 'render',
       type: '(children: ReactNode, props: ContextRenderProps | FixedRenderProps) => ReactNode',
       description:
-        'Render function for the popover element. Pass placement/alignment in context mode or x/y in fixed mode. In context mode, pass `as: "span"` to render an inline-safe layer (e.g. inside a paragraph). The layer renders inline in the React tree — the Popover API promotes it to the top layer when shown, so it escapes ancestor clipping and stacking without a portal.',
+        'Render function for the popover element. Pass placement/alignment in context mode or x/y in fixed mode. In context mode, pass `as: "span"` to render an inline-safe layer (e.g. inside a paragraph). The layer renders inline in the React tree; the Popover API promotes it to the top layer when shown, so it escapes ancestor clipping and stacking without a portal.',
     },
   ],
   usage: {
@@ -98,7 +98,7 @@ export const docs = {
       {
         guidance: true,
         description:
-          'Rely on the Popover API top layer to escape ancestor clipping and stacking — render the layer inline (no portal) so it inherits the trigger\u2019s theme cascade and keeps a natural focus order. Use `as: "span"` when the layer must be valid inside inline contexts like a paragraph.',
+          'Rely on the Popover API top layer to escape ancestor clipping and stacking: render the layer inline (no portal) so it inherits the trigger\'s theme cascade and keeps a natural focus order. Use `as: "span"` when the layer must be valid inside inline contexts like a paragraph.',
       },
       {
         guidance: false,
