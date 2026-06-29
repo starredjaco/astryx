@@ -99,8 +99,8 @@ describe('Link', () => {
 
   it('renders with different color values', () => {
     const {rerender} = render(
-      <Link href="/test" color="active">
-        Active
+      <Link href="/test" color="accent">
+        Accent
       </Link>,
     );
     expect(screen.getByRole('link')).toBeInTheDocument();

@@ -117,7 +117,7 @@ const linkColorStyles = stylex.create({
   placeholder: {
     color: colorVars['--color-text-secondary'],
   },
-  active: {
+  accent: {
     color: colorVars['--color-text-accent'],
   },
   inherit: {
@@ -216,7 +216,7 @@ export interface LinkProps extends BaseProps<
   weight?: TextWeight;
   /**
    * Text color. Forwarded to Text.
-   * @default 'active'
+   * @default 'accent'
    */
   color?: TextColor;
   /**
@@ -264,7 +264,7 @@ export function Link({
   type = 'body',
   size,
   weight,
-  color = 'active',
+  color = 'accent',
   display = 'inline',
   maxLines = 0,
   children,

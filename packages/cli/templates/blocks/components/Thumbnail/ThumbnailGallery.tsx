@@ -8,10 +8,30 @@ import {Stack} from '@astryxdesign/core/Layout';
 import {Text} from '@astryxdesign/core/Text';
 
 const ATTACHMENTS = [
-  {id: 1, src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-1.png', alt: 'River through a valley', label: 'valley.jpg'},
-  {id: 2, src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-2.png', alt: 'Foggy mountain peak', label: 'mountain.jpg'},
-  {id: 3, src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-3.png', alt: 'Golden retriever puppy', label: 'puppy.jpg'},
-  {id: 4, src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-4.png', alt: 'Bridge at sunset', label: 'bridge.jpg'},
+  {
+    id: 1,
+    src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-1.png',
+    alt: 'River through a valley',
+    label: 'valley.jpg',
+  },
+  {
+    id: 2,
+    src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-2.png',
+    alt: 'Foggy mountain peak',
+    label: 'mountain.jpg',
+  },
+  {
+    id: 3,
+    src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-3.png',
+    alt: 'Golden retriever puppy',
+    label: 'puppy.jpg',
+  },
+  {
+    id: 4,
+    src: 'https://lookaside.facebook.com/assets/astryx/illustrative-vertical-4.png',
+    alt: 'Bridge at sunset',
+    label: 'bridge.jpg',
+  },
 ];
 
 export default function ThumbnailGallery() {
@@ -38,7 +58,7 @@ export default function ThumbnailGallery() {
         ))}
       </Stack>
       {selected != null && (
-        <Text type="supporting" color="active">
+        <Text type="supporting" color="accent">
           Previewing: {selected}
         </Text>
       )}
