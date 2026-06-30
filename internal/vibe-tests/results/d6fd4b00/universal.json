@@ -1,0 +1,853 @@
+{
+  "averages": {
+    "correctness": 62,
+    "accessibility": 100,
+    "codeQuality": 100,
+    "efficiency": 85,
+    "maintainability": 97
+  },
+  "overall": 89,
+  "byPrompt": {
+    "cwm-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 90,
+        "findings": [],
+        "metrics": {
+          "totalLines": 75,
+          "codeLines": 66,
+          "stylingLines": 0,
+          "boilerplateLines": 17,
+          "logicLines": 49,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.25757575757575757,
+          "decisionsPerElement": 1,
+          "elementCount": 22,
+          "stylingDecisionCount": 22,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 13,
+          "avgStateSpread": 25
+        }
+      }
+    },
+    "dd-6": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 82,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 4 times",
+            "count": 4,
+            "example": "{id: \"_\", name: \"_\", role: \"_\", email: \"_\", avatar: \"_\", department: \"_\"},"
+          }
+        ],
+        "metrics": {
+          "totalLines": 58,
+          "codeLines": 55,
+          "stylingLines": 0,
+          "boilerplateLines": 15,
+          "logicLines": 40,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.2727272727272727,
+          "decisionsPerElement": 1.1,
+          "elementCount": 16,
+          "stylingDecisionCount": 17,
+          "duplicateRatio": 0.07
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 10,
+          "avgStateSpread": 0
+        }
+      }
+    },
+    "fwc-8": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 60,
+        "findings": [],
+        "metrics": {
+          "totalLines": 31,
+          "codeLines": 28,
+          "stylingLines": 0,
+          "boilerplateLines": 28,
+          "logicLines": 0,
+          "stylingRatio": 0,
+          "boilerplateRatio": 1,
+          "decisionsPerElement": 1,
+          "elementCount": 5,
+          "stylingDecisionCount": 5,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 4,
+          "avgStateSpread": 17
+        }
+      }
+    },
+    "io-1": {
+      "correctness": {
+        "score": 55,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 44
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; type: string; }' is not assignable to type 'IntrinsicAttributes & BannerProps'.",
+            "line": 47
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"filled\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+            "line": 64
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 90,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "setErrorMessage(\"_\");"
+          }
+        ],
+        "metrics": {
+          "totalLines": 70,
+          "codeLines": 60,
+          "stylingLines": 0,
+          "boilerplateLines": 6,
+          "logicLines": 54,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.1,
+          "decisionsPerElement": 0.8,
+          "elementCount": 8,
+          "stylingDecisionCount": 6,
+          "duplicateRatio": 0.05
+        }
+      },
+      "maintainability": {
+        "score": 92,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 5,
+          "avgStateSpread": 48
+        }
+      }
+    },
+    "ps-4": {
+      "correctness": {
+        "score": 0,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2741: Property 'label' is missing in type '{ children: string; }' but required in type 'BadgeProps'.",
+            "line": 35
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 36
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"md\"' is not assignable to type 'TextSize | undefined'.",
+            "line": 36
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 37
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"md\"' is not assignable to type 'TextSize | undefined'.",
+            "line": 40
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"filled\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+            "line": 48
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"outlined\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+            "line": 49
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & TabProps'.",
+            "line": 55
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & TabProps'.",
+            "line": 56
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & TabProps'.",
+            "line": 57
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"md\"' is not assignable to type 'TextSize | undefined'.",
+            "line": 61
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 92,
+        "findings": [],
+        "metrics": {
+          "totalLines": 69,
+          "codeLines": 60,
+          "stylingLines": 0,
+          "boilerplateLines": 12,
+          "logicLines": 48,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.2,
+          "decisionsPerElement": 0.8,
+          "elementCount": 25,
+          "stylingDecisionCount": 19,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 90,
+        "findings": [
+          {
+            "rule": "magic-values",
+            "severity": "minor",
+            "detail": "2 magic values (hardcoded colors, spacing, or typography)",
+            "count": 2
+          }
+        ],
+        "metrics": {
+          "semanticRatio": 0.88,
+          "magicValueCount": 2,
+          "semanticValueCount": 14,
+          "avgStateSpread": 0
+        }
+      }
+    },
+    "rc-2": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 85,
+        "findings": [],
+        "metrics": {
+          "totalLines": 70,
+          "codeLines": 67,
+          "stylingLines": 15,
+          "boilerplateLines": 10,
+          "logicLines": 42,
+          "stylingRatio": 0.22388059701492538,
+          "boilerplateRatio": 0.14925373134328357,
+          "decisionsPerElement": 1.5,
+          "elementCount": 11,
+          "stylingDecisionCount": 16,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 5,
+          "avgStateSpread": 23
+        }
+      }
+    },
+    "sd-5": {
+      "correctness": {
+        "score": 70,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 16
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"md\"' is not assignable to type 'TextSize | undefined'.",
+            "line": 17
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 94,
+        "findings": [],
+        "metrics": {
+          "totalLines": 48,
+          "codeLines": 42,
+          "stylingLines": 0,
+          "boilerplateLines": 6,
+          "logicLines": 36,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.14285714285714285,
+          "decisionsPerElement": 0.7,
+          "elementCount": 9,
+          "stylingDecisionCount": 6,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 4,
+          "avgStateSpread": 24
+        }
+      }
+    },
+    "tc-1": {
+      "correctness": {
+        "score": 25,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2345: Argument of type '{ tokens: { '--color-accent': string; '--color-background-surface': string; '--color-text-primary': string; }; }' is not assignable to parameter of type 'DefineThemeInput'.",
+            "line": 9
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2345: Argument of type '{ tokens: { '--color-accent': string; '--color-background-surface': string; '--color-text-primary': string; }; }' is not assignable to parameter of type 'DefineThemeInput'.",
+            "line": 17
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 36
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"md\"' is not assignable to type 'TextSize | undefined'.",
+            "line": 37
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"filled\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+            "line": 40
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 93,
+        "findings": [],
+        "metrics": {
+          "totalLines": 47,
+          "codeLines": 42,
+          "stylingLines": 0,
+          "boilerplateLines": 7,
+          "logicLines": 35,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.16666666666666666,
+          "decisionsPerElement": 1.2,
+          "elementCount": 5,
+          "stylingDecisionCount": 6,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 5,
+          "avgStateSpread": 15
+        }
+      }
+    },
+    "ty-5": {
+      "correctness": {
+        "score": 70,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2820: Type '\"display\"' is not assignable to type 'TextType | undefined'. Did you mean '\"display-1\"'?",
+            "line": 19
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '\"filled\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+            "line": 26
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 84,
+        "findings": [],
+        "metrics": {
+          "totalLines": 32,
+          "codeLines": 30,
+          "stylingLines": 6,
+          "boilerplateLines": 6,
+          "logicLines": 18,
+          "stylingRatio": 0.2,
+          "boilerplateRatio": 0.2,
+          "decisionsPerElement": 2,
+          "elementCount": 5,
+          "stylingDecisionCount": 10,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 6,
+          "avgStateSpread": 0
+        }
+      }
+    },
+    "wd-4": {
+      "correctness": {
+        "score": 0,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & SegmentedControlItemProps'.",
+            "line": 104
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & SegmentedControlItemProps'.",
+            "line": 105
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ children: string; value: string; }' is not assignable to type 'IntrinsicAttributes & SegmentedControlItemProps'.",
+            "line": 106
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2741: Property 'label' is missing in type '{ children: string; onClick: () => void; }' but required in type 'ButtonProps'.",
+            "line": 108
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type 'Todo[]' is not assignable to type 'Record<string, unknown>[]'.",
+            "line": 112
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2741: Property 'label' is missing in type '{ children: string; onClick: () => void; }' but required in type 'ButtonProps'.",
+            "line": 135
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type '{ isOpen: boolean; onOpenChange: (open: boolean) => void; title: string; description: string; confirmLabel: string; onConfirm: () => void; }' is not assignable to type 'IntrinsicAttributes & AlertDialogProps'.",
+            "line": 144
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 82,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "{id: \"_\", title: \"_\", status: \"_\", createdAt: \"_\", updatedAt: \"_\"},"
+          },
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 4 times",
+            "count": 4,
+            "example": "{key: \"_\" as const, header: \"_\", width: {type: \"_\" as const, value: N}},"
+          }
+        ],
+        "metrics": {
+          "totalLines": 149,
+          "codeLines": 135,
+          "stylingLines": 0,
+          "boilerplateLines": 21,
+          "logicLines": 114,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.15555555555555556,
+          "decisionsPerElement": 0.2,
+          "elementCount": 18,
+          "stylingDecisionCount": 3,
+          "duplicateRatio": 0.05
+        }
+      },
+      "maintainability": {
+        "score": 83,
+        "findings": [
+          {
+            "rule": "moderate-state-spread",
+            "severity": "minor",
+            "detail": "Average state variable spread: 68 lines"
+          }
+        ],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 0,
+          "avgStateSpread": 68
+        }
+      }
+    }
+  },
+  "byCategory": {
+    "clone-with-modification": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 90,
+      "maintainability": 100
+    },
+    "data-display": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 82,
+      "maintainability": 100
+    },
+    "feature-with-constraint": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 60,
+      "maintainability": 100
+    },
+    "integration-oriented": {
+      "correctness": 55,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 90,
+      "maintainability": 92
+    },
+    "page-setup": {
+      "correctness": 0,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 92,
+      "maintainability": 90
+    },
+    "responsive-context": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 85,
+      "maintainability": 100
+    },
+    "state-driven": {
+      "correctness": 70,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 94,
+      "maintainability": 100
+    },
+    "theme-customization": {
+      "correctness": 25,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 93,
+      "maintainability": 100
+    },
+    "typography": {
+      "correctness": 70,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 84,
+      "maintainability": 100
+    },
+    "workflow-description": {
+      "correctness": 0,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 82,
+      "maintainability": 83
+    }
+  },
+  "darkModeRate": 0,
+  "cost": {
+    "totalDurationMs": 4459428,
+    "avgDurationMs": 445943,
+    "avgOutputChars": 2215,
+    "avgOutputLines": 65,
+    "avgDocsRead": 2.7,
+    "estimatedInputTokens": 20625,
+    "estimatedOutputTokens": 5539,
+    "byPrompt": {
+      "cwm-1": {
+        "durationMs": 445944,
+        "outputChars": 2896,
+        "outputLines": 75,
+        "docsRead": [
+          "Table",
+          "Button",
+          "Card",
+          "SegmentedControl"
+        ],
+        "estimatedInputTokens": 2875,
+        "estimatedOutputTokens": 724
+      },
+      "dd-6": {
+        "durationMs": 445943,
+        "outputChars": 2167,
+        "outputLines": 58,
+        "docsRead": [
+          "HoverCard",
+          "Card",
+          "Avatar"
+        ],
+        "estimatedInputTokens": 2250,
+        "estimatedOutputTokens": 542
+      },
+      "fwc-8": {
+        "durationMs": 445946,
+        "outputChars": 931,
+        "outputLines": 31,
+        "docsRead": [
+          "DateRangeInput"
+        ],
+        "estimatedInputTokens": 1000,
+        "estimatedOutputTokens": 233
+      },
+      "io-1": {
+        "durationMs": 445942,
+        "outputChars": 2207,
+        "outputLines": 70,
+        "docsRead": [
+          "TextInput",
+          "Button"
+        ],
+        "estimatedInputTokens": 1625,
+        "estimatedOutputTokens": 552
+      },
+      "ps-4": {
+        "durationMs": 445941,
+        "outputChars": 2611,
+        "outputLines": 69,
+        "docsRead": [
+          "Breadcrumbs",
+          "Button",
+          "Card",
+          "TabList"
+        ],
+        "estimatedInputTokens": 2875,
+        "estimatedOutputTokens": 653
+      },
+      "rc-2": {
+        "durationMs": 445943,
+        "outputChars": 2138,
+        "outputLines": 70,
+        "docsRead": [
+          "SideNav"
+        ],
+        "estimatedInputTokens": 1000,
+        "estimatedOutputTokens": 535
+      },
+      "sd-5": {
+        "durationMs": 445944,
+        "outputChars": 1468,
+        "outputLines": 48,
+        "docsRead": [
+          "Switch"
+        ],
+        "estimatedInputTokens": 1000,
+        "estimatedOutputTokens": 367
+      },
+      "tc-1": {
+        "durationMs": 445940,
+        "outputChars": 1404,
+        "outputLines": 47,
+        "docsRead": [
+          "Switch",
+          "Button",
+          "Card",
+          "Theme"
+        ],
+        "estimatedInputTokens": 2875,
+        "estimatedOutputTokens": 351
+      },
+      "ty-5": {
+        "durationMs": 445940,
+        "outputChars": 943,
+        "outputLines": 32,
+        "docsRead": [
+          "Button"
+        ],
+        "estimatedInputTokens": 1000,
+        "estimatedOutputTokens": 236
+      },
+      "wd-4": {
+        "durationMs": 445945,
+        "outputChars": 5382,
+        "outputLines": 149,
+        "docsRead": [
+          "Table",
+          "Dialog",
+          "TextInput",
+          "Button",
+          "SegmentedControl",
+          "Pagination"
+        ],
+        "estimatedInputTokens": 4125,
+        "estimatedOutputTokens": 1346
+      }
+    }
+  }
+}

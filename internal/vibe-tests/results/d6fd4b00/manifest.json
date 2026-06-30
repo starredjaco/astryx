@@ -1,0 +1,118 @@
+{
+  "iterationId": "d6fd4b00",
+  "createdAt": "2026-06-30T11:03:34.153Z",
+  "config": {
+    "target": "astryx",
+    "persona": "naive",
+    "holdout": false,
+    "degradation": false,
+    "cliRetrieval": true
+  },
+  "prompts": [
+    {
+      "id": "fwc-8",
+      "category": "feature-with-constraint",
+      "prompt": "Create a date range picker for booking a hotel stay. Users should pick check-in and check-out dates. Past dates should be disabled.",
+      "expectedComponents": [
+        "XDSDateInput",
+        "XDSCalendar"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wd-4",
+      "category": "workflow-description",
+      "prompt": "Create a new internal tool called TodoTracker. UI Requirements: Display todos in a paginated table (default 25 per page). Columns: Title, Status, Created, Updated. Sortable by: Updated date (default desc), Created date, Title. Add a filter bar that filters by title (substring match) and status. Inline editing for todo title (with save/cancel). Status toggle button (Open <-> Closed). 'Create Todo' button that opens a modal with title input. Delete button with confirmation dialog. UI should update optimistically after any modification. Optimistic updates should be marked as 'pending' until the modification is complete.",
+      "expectedComponents": [
+        "XDSTable",
+        "XDSButton",
+        "XDSTextInput"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "cwm-1",
+      "category": "clone-with-modification",
+      "prompt": "Something like Stripe's pricing table but with monthly/annual toggle",
+      "expectedComponents": [
+        "XDSCard",
+        "XDSButton"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "sd-5",
+      "category": "state-driven",
+      "prompt": "Create a notification preferences panel with toggle switches for Email notifications, Push notifications, and SMS alerts. Each switch should show its current state.",
+      "expectedComponents": [
+        "XDSSwitch",
+        "XDSCard"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dd-6",
+      "category": "data-display",
+      "prompt": "Create a team members list where hovering over a member's name shows a hover card with their avatar, role, email, and a \"Message\" button.",
+      "expectedComponents": [
+        "XDSHoverCard",
+        "XDSAvatar",
+        "XDSText",
+        "XDSButton"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "rc-2",
+      "category": "responsive-context",
+      "prompt": "A sidebar that becomes a bottom sheet on mobile",
+      "expectedComponents": [
+        "XDSCard",
+        "XDSLayoutPanel"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "io-1",
+      "category": "integration-oriented",
+      "prompt": "A form that validates email and posts to /api/subscribe",
+      "expectedComponents": [
+        "XDSTextInput",
+        "XDSButton"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ps-4",
+      "category": "page-setup",
+      "prompt": "Create a product detail page with breadcrumb navigation showing Home > Category > Subcategory > Product Name. The page should have a header, product info section, and a back button.",
+      "expectedComponents": [
+        "XDSBreadcrumbs",
+        "XDSCard",
+        "XDSButton"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ty-5",
+      "category": "typography",
+      "prompt": "Build a landing page hero with a large display heading that says 'Build faster with XDS', a subheading paragraph, and a CTA button",
+      "expectedComponents": [
+        "XDSHeading",
+        "XDSText",
+        "XDSButton"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tc-1",
+      "category": "theme-customization",
+      "prompt": "Set up a dark mode toggle for my app. I want a button that switches between light and dark themes using the XDS theme system.",
+      "expectedComponents": [
+        "XDSTheme",
+        "XDSButton"
+      ],
+      "status": "pending"
+    }
+  ]
+}
