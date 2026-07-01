@@ -1,0 +1,114 @@
+{
+  "cwm-3": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "dd-5": {
+    "target": "astryx-tailwind",
+    "errors": [
+      {
+        "line": 28,
+        "message": "Type 'Email' does not satisfy the constraint 'Record<string, unknown>'.",
+        "code": "TS2344"
+      },
+      {
+        "line": 68,
+        "message": "Type 'Email[]' is not assignable to type 'Record<string, unknown>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 68,
+        "message": "Type '({ key: \"sender\"; header: string; renderCell?: undefined; } | { key: \"subject\"; header: string; renderCell?: undefined; } | { key: \"date\"; header: string; renderCell?: undefined; } | { key: \"preview\"; header: string; renderCell: (item: Email) => Element; })[]' is not assignable to type 'TableColumn<Record<string, unknown>>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 68,
+        "message": "Type 'TablePlugin<Email>' is not assignable to type 'TablePlugin<Record<string, unknown>>'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 4,
+    "buildSuccess": false
+  },
+  "fwc-1": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "io-3": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ps-4": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "rc-1": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "sd-6": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "tc-7": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ty-1": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "wd-4": {
+    "target": "astryx-tailwind",
+    "errors": [
+      {
+        "line": 49,
+        "message": "Type '{ sortKey: string; direction: \"desc\" | \"asc\"; }[]' is not assignable to type 'TableSortState<string>'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 49,
+        "message": "Type 'Dispatch<SetStateAction<{ sortKey: string; direction: \"desc\" | \"asc\"; }[]>>' is not assignable to type '(sort: TableSortState<string>) => void'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 106,
+        "message": "Type 'Todo[]' is not assignable to type 'Record<string, unknown>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 106,
+        "message": "Type '({ key: \"title\"; header: string; renderCell: (item: Todo) => Element; } | { key: \"status\"; header: string; renderCell: (item: Todo) => Element; } | { key: \"createdAt\"; header: string; renderCell?: undefined; } | { ...; } | { ...; })[]' is not assignable to type 'TableColumn<Record<string, unknown>>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 108,
+        "message": "Type '{ children: Element; title: string; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & DialogProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 116,
+        "message": "Type '{ children: Element; title: string; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & DialogProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 6,
+    "buildSuccess": false
+  }
+}

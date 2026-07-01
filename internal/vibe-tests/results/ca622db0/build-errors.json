@@ -1,0 +1,88 @@
+{
+  "cwm-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "dd-5": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 29,
+        "message": "Type 'Email' does not satisfy the constraint 'Record<string, unknown>'.",
+        "code": "TS2344"
+      },
+      {
+        "line": 77,
+        "message": "Property 'label' is missing in type '{ children: Element[]; }' but required in type 'ToolbarProps'.",
+        "code": "TS2741"
+      },
+      {
+        "line": 85,
+        "message": "Type 'Email[]' is not assignable to type 'Record<string, unknown>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 86,
+        "message": "Type '({ key: \"sender\"; header: string; renderCell?: undefined; } | { key: \"subject\"; header: string; renderCell?: undefined; } | { key: \"date\"; header: string; renderCell?: undefined; } | { key: \"preview\"; header: string; renderCell: (item: Email) => Element; })[]' is not assignable to type 'TableColumn<Record<string, unknown>>[]'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 89,
+        "message": "Type 'TablePlugin<Email>' is not assignable to type 'TablePlugin<Record<string, unknown>>'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 5,
+    "buildSuccess": false
+  },
+  "fwc-1": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "io-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ps-4": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "rc-1": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "sd-6": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "tc-7": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ty-1": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "wd-4": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  }
+}
