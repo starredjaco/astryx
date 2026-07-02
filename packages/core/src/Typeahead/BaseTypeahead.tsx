@@ -48,9 +48,10 @@ import {themeProps} from '../utils/themeProps';
 // Types
 // =============================================================================
 
-export interface BaseTypeaheadProps<
-  T extends SearchableItem,
-> extends Omit<BaseProps<HTMLElement>, 'onChange'> {
+export interface BaseTypeaheadProps<T extends SearchableItem> extends Omit<
+  BaseProps<HTMLElement>,
+  'onChange'
+> {
   ref?: React.Ref<HTMLInputElement>;
   /**
    * Search source providing items.
@@ -280,9 +281,7 @@ const itemSizeStyles = stylex.create({
  * />
  * ```
  */
-export const BaseTypeahead = function BaseTypeahead<
-  T extends SearchableItem,
->({
+export const BaseTypeahead = function BaseTypeahead<T extends SearchableItem>({
   searchSource,
   value,
   onChange,
@@ -614,6 +613,19 @@ export const BaseTypeahead = function BaseTypeahead<
     (index: number) => `${listboxId}-option-${index}`,
     [listboxId],
   );
+
+  // Keep the highlighted option visible during keyboard navigation. The
+  // listbox is a fixed-height scroll container, so without this the virtual
+  // cursor walks off-screen once navigation passes the visible window. Mirrors
+  // CommandPaletteItem's scrollIntoView({block: 'nearest'}) behavior.
+  useEffect(() => {
+    if (!popover.isOpen || highlightedIndex < 0) {
+      return;
+    }
+    document
+      .getElementById(getItemId(highlightedIndex))
+      ?.scrollIntoView?.({block: 'nearest'});
+  }, [popover.isOpen, highlightedIndex, getItemId]);
 
   const selectedKey =
     value == null ? null : getKey(value.id, () => results.indexOf(value));

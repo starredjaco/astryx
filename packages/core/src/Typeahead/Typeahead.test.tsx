@@ -573,4 +573,39 @@ describe('BaseTypeahead paste behavior', () => {
       expect(screen.getByText('No results found')).toBeInTheDocument();
     });
   });
+
+  it('scrolls the highlighted option into view during arrow navigation', async () => {
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+      configurable: true,
+      value: scrollIntoView,
+    });
+    try {
+      const user = userEvent.setup();
+      render(
+        <BaseTypeahead
+          searchSource={fruitSource}
+          value={null}
+          onChange={() => {}}
+          debounceMs={0}
+        />,
+      );
+
+      const input = screen.getByRole('combobox');
+      await user.click(input);
+      await user.paste('e'); // matches multiple fruits, opens listbox
+      await waitFor(() => {
+        expect(screen.getByRole('listbox', {hidden: true})).toBeInTheDocument();
+      });
+
+      scrollIntoView.mockClear();
+      await user.keyboard('{ArrowDown}');
+      await user.keyboard('{ArrowDown}');
+
+      expect(scrollIntoView).toHaveBeenCalledWith({block: 'nearest'});
+    } finally {
+      delete (HTMLElement.prototype as unknown as {scrollIntoView?: unknown})
+        .scrollIntoView;
+    }
+  });
 });

@@ -736,5 +736,39 @@ describe('MultiSelector', () => {
       const clear = screen.getByRole('button', {name: 'Clear all Fruit'});
       expect(clear).not.toHaveAttribute('tabIndex', '-1');
     });
+
+    it('scrolls the highlighted option into view during arrow navigation', async () => {
+      const scrollIntoView = vi.fn();
+      Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+        configurable: true,
+        value: scrollIntoView,
+      });
+      try {
+        const user = userEvent.setup();
+        const longOptions = Array.from(
+          {length: 20},
+          (_, i) => `Option ${i + 1}`,
+        );
+        render(
+          <MultiSelector
+            label="Fruit"
+            options={longOptions}
+            value={[]}
+            onChange={() => {}}
+          />,
+        );
+
+        const trigger = screen.getByRole('combobox');
+        await user.click(trigger);
+        scrollIntoView.mockClear();
+        await user.keyboard('{ArrowDown}');
+        await user.keyboard('{ArrowDown}');
+
+        expect(scrollIntoView).toHaveBeenCalledWith({block: 'nearest'});
+      } finally {
+        delete (HTMLElement.prototype as unknown as {scrollIntoView?: unknown})
+          .scrollIntoView;
+      }
+    });
   });
 });
