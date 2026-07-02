@@ -100,15 +100,18 @@ export function NavHeadingMenu({
   const closeMenu = closeCtx?.closeMenu;
 
   const {listRef, handleKeyDown, focusItem} = useListFocus({
+    itemSelector: '[role="menuitem"]:not([aria-disabled="true"])',
     onEscape: closeMenu,
   });
 
-  // First-character typeahead over the menu items (menus-11).
+  // First-character typeahead over the (enabled) menu items (menus-11).
   const getMenuItems = useCallback(
     (): HTMLElement[] =>
       listRef.current
         ? Array.from(
-            listRef.current.querySelectorAll<HTMLElement>('[role="menuitem"]'),
+            listRef.current.querySelectorAll<HTMLElement>(
+              '[role="menuitem"]:not([aria-disabled="true"])',
+            ),
           )
         : [],
     [listRef],
@@ -121,8 +124,6 @@ export function NavHeadingMenu({
         el =>
           el === document.activeElement || el.contains(document.activeElement),
       ),
-    isDisabled: index =>
-      getMenuItems()[index]?.getAttribute('aria-disabled') === 'true',
   });
 
   // Extend useListFocus with Enter/Space activation. Items rendered without an
