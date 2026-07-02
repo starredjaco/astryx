@@ -183,6 +183,7 @@ export function RadioList({
 }: RadioListProps) {
   const name = useId();
   const inputID = useId();
+  const labelElementID = useId();
   const descriptionID = useId();
   const statusMessageID = useId();
 
@@ -283,6 +284,8 @@ export function RadioList({
       isLabelHidden={isLabelHidden}
       description={description}
       inputID={inputID}
+      labelElementID={labelElementID}
+      isGroupLabel
       descriptionID={description ? descriptionID : undefined}
       isOptional={isOptional}
       isRequired={isRequired}
@@ -305,7 +308,7 @@ export function RadioList({
       <div
         ref={groupRef}
         role="radiogroup"
-        aria-label={label}
+        aria-labelledby={labelElementID}
         onFocus={handleFocus}
         aria-describedby={
           [

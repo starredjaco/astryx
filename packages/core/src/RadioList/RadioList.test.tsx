@@ -271,11 +271,32 @@ describe('RadioList', () => {
     );
     const label = screen.getByText('Hidden label');
     expect(label).toBeInTheDocument();
-    // The radiogroup should still be labeled
-    expect(screen.getByRole('radiogroup')).toHaveAttribute(
-      'aria-label',
-      'Hidden label',
+    // The radiogroup is named by the label element via aria-labelledby (not a
+    // duplicated aria-label), so its accessible name is still "Hidden label".
+    expect(
+      screen.getByRole('radiogroup', {name: 'Hidden label'}),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('radiogroup')).toHaveAttribute('aria-labelledby');
+    expect(screen.getByRole('radiogroup')).not.toHaveAttribute('aria-label');
+  });
+
+  it('renders the group label as a span, not a label element (forms-14)', () => {
+    render(
+      <RadioList label="Plan" value="" onChange={() => {}}>
+        <RadioListItem label="Free" value="free" />
+        <RadioListItem label="Pro" value="pro" />
+      </RadioList>,
     );
+    // A radiogroup's accessible name must not come from a literal `<label>`
+    // element — a `<label>` names a single control and can't be associated
+    // with a group. It is rendered as a `<span>` and referenced via
+    // aria-labelledby (with no orphaned htmlFor).
+    const labelEl = screen.getByText('Plan');
+    expect(labelEl.tagName).toBe('SPAN');
+    expect(labelEl.closest('label')).toBeNull();
+    expect(labelEl).not.toHaveAttribute('for');
+    const group = screen.getByRole('radiogroup', {name: 'Plan'});
+    expect(group.getAttribute('aria-labelledby')).toBe(labelEl.id);
   });
 
   it('renders description on items', () => {
