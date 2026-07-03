@@ -27,6 +27,9 @@ export type {
   ListFocusOrientation,
 } from './useListFocus';
 
+export {useTreeFocus} from './useTreeFocus';
+export type {UseTreeFocusOptions, UseTreeFocusReturn} from './useTreeFocus';
+
 export {useTypeahead} from './useTypeahead';
 export type {UseTypeaheadOptions, UseTypeaheadReturn} from './useTypeahead';
 
