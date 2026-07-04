@@ -49,6 +49,7 @@ import {Spinner} from '../Spinner';
 import {Calendar, type ISODateString, type CalendarHandle} from '../Calendar';
 import {useCalendarConstraints} from '../Calendar/hooks';
 import {usePopover} from '../Popover';
+import {useTooltip} from '../Tooltip';
 import {parseDateInput} from '../utils';
 import {
   plainDateFromISO,
@@ -175,6 +176,29 @@ export interface DateInputProps extends Omit<
   isDisabled?: boolean;
 
   /**
+   * Explains why the input is disabled. When set together with
+   * `isDisabled`, the input shows a tooltip with this text on hover and
+   * keyboard focus, and the field stays focusable (via `aria-disabled`)
+   * so the reason is discoverable by keyboard and assistive technology.
+   * Typing and calendar activation stay blocked.
+   *
+   * Use this instead of wrapping a disabled input in `Tooltip` — disabled
+   * controls don't emit the pointer events an external tooltip needs.
+   *
+   * @example
+   * ```
+   * <DateInput
+   *   label="Event date"
+   *   value={date}
+   *   onChange={setDate}
+   *   isDisabled
+   *   disabledMessage="You need the Editor role to change this"
+   * />
+   * ```
+   */
+  disabledMessage?: string;
+
+  /**
    * The selected date in ISO format (YYYY-MM-DD).
    */
   value?: ISODateString;
@@ -276,6 +300,7 @@ export function DateInput({
   isOptional = false,
   isRequired = false,
   isDisabled = false,
+  disabledMessage,
   value,
   onChange,
   changeAction,
@@ -308,6 +333,22 @@ export function DateInput({
   const isBusy = isLoading || optimisticValue !== value;
   const isEffectivelyDisabled = isDisabled || isBusy;
 
+  // Disabled-reason tooltip. Disabled controls swallow pointer events, so the
+  // tooltip listeners attach to the input container (which already exists) and
+  // the text input stays perceivable via aria-disabled instead of the disabled
+  // attribute. Typing is blocked with readOnly and value mutation guards;
+  // calendar activation is blocked by the isEffectivelyDisabled guards. Only
+  // the persistent isDisabled state (not the transient busy state) surfaces a
+  // reason.
+  const showsDisabledMessage = isDisabled && !!disabledMessage;
+  const disabledMessageTooltip = useTooltip({
+    placement: 'above',
+    // The container div is not naturally focusable; focusin bubbles up from
+    // the input, so always attach focus listeners.
+    focusTrigger: 'always',
+    isEnabled: showsDisabledMessage,
+  });
+
   // Status icon mapping
   const statusIconMap: Record<InputStatusType, IconName> = {
     warning: 'warning',
@@ -331,6 +372,7 @@ export function DateInput({
     [
       description ? descriptionID : null,
       status?.message ? statusMessageID : null,
+      showsDisabledMessage ? disabledMessageTooltip.describedBy : null,
     ]
       .filter(Boolean)
       .join(' ') || undefined;
@@ -425,6 +467,11 @@ export function DateInput({
   // Handle input text change - update immediately if valid and allowed
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      // With a disabledMessage the input drops `disabled` for focusability, so
+      // guard value mutation explicitly (readOnly also blocks typing).
+      if (isEffectivelyDisabled) {
+        return;
+      }
       const newValue = e.target.value;
       setPendingInput(newValue);
 
@@ -442,7 +489,7 @@ export function DateInput({
         calendarRef.current?.navigateTo(parsedISO);
       }
     },
-    [value, fireChange, isDateDisabled],
+    [value, fireChange, isDateDisabled, isEffectivelyDisabled],
   );
 
   // Commit pending input (shared by blur and Enter key)
@@ -520,7 +567,13 @@ export function DateInput({
       labelTooltip={labelTooltip}
       width={width}>
       <div
-        ref={popover.triggerRef}
+        ref={el => {
+          popover.triggerRef(el);
+          // Anchor + hover/focus listeners for the disabled-message tooltip.
+          // Handlers are gated internally by isEnabled, and anchor names
+          // compose, so attaching unconditionally is safe.
+          disabledMessageTooltip.ref(el);
+        }}
         {...rest}
         {...mergeProps(
           themeProps('date-input', {size, status: status?.type ?? null}),
@@ -558,7 +611,13 @@ export function DateInput({
           onClick={handleInputClick}
           onKeyDown={handleInputKeyDown}
           placeholder={placeholder}
-          disabled={isEffectivelyDisabled}
+          // With a disabledMessage the input keeps focusability via
+          // aria-disabled so the reason is focus-discoverable; typing is
+          // blocked with readOnly and the mutation guards, and calendar
+          // activation is blocked by the isEffectivelyDisabled guards.
+          disabled={isEffectivelyDisabled && !showsDisabledMessage}
+          aria-disabled={showsDisabledMessage ? 'true' : undefined}
+          readOnly={showsDisabledMessage || undefined}
           aria-describedby={ariaDescribedBy}
           aria-required={isRequired === true ? 'true' : undefined}
           aria-invalid={
@@ -615,6 +674,9 @@ export function DateInput({
         />,
         {placement: 'below', alignment: 'start'},
       )}
+
+      {showsDisabledMessage &&
+        disabledMessageTooltip.renderTooltip(disabledMessage)}
     </Field>
   );
 }
