@@ -83,7 +83,7 @@
     "@astryxdesign/core": "*",
     "@astryxdesign/lab": "*",
     "@astryxdesign/theme-neutral": "*",
-    "gpt-tokenizer": "^2.0.0"
+    "gpt-tokenizer": "^3.4.0"
   },
   "peerDependenciesMeta": {
     "@astryxdesign/core": {
@@ -100,6 +100,6 @@
     "@astryxdesign/core": "*",
     "@astryxdesign/lab": "*",
     "@astryxdesign/theme-neutral": "*",
-    "gpt-tokenizer": "^2.0.0"
+    "gpt-tokenizer": "^3.4.0"
   }
 }
