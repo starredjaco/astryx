@@ -1,0 +1,120 @@
+{
+  "iterationId": "62b2ea76",
+  "createdAt": "2026-07-09T11:07:00.425Z",
+  "config": {
+    "target": "astryx",
+    "persona": "naive",
+    "holdout": false,
+    "degradation": false,
+    "cliRetrieval": true
+  },
+  "prompts": [
+    {
+      "id": "fwc-15",
+      "category": "feature-with-constraint",
+      "prompt": "Build a compact filter bar above a results table with a multi-select dropdown for filtering by tag. There's no room for a visible label above the control — the placeholder text 'Filter by tags' does the work visually — but screen reader users still need to know what the field is.",
+      "expectedComponents": [
+        "XDSMultiSelector"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "wd-1",
+      "category": "workflow-description",
+      "prompt": "Build a checkout flow: cart summary → shipping → payment → confirmation",
+      "expectedComponents": [
+        "Card",
+        "Button",
+        "TextInput"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "cwm-2",
+      "category": "clone-with-modification",
+      "prompt": "A GitHub-style issue label picker with color dots and search",
+      "expectedComponents": [
+        "TextInput",
+        "Button",
+        "Card"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "sd-2",
+      "category": "state-driven",
+      "prompt": "A button that shows loading spinner while submitting, then success checkmark",
+      "expectedComponents": [
+        "Button"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "dd-4",
+      "category": "data-display",
+      "prompt": "Create a user profile page with tabs for Overview, Activity, and Settings. Each tab should show different content. The Overview tab should be selected by default.",
+      "expectedComponents": [
+        "TabList",
+        "Tab",
+        "Card"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "rc-3",
+      "category": "responsive-context",
+      "prompt": "Cards that stack vertically on mobile but show in a grid on desktop",
+      "expectedComponents": [
+        "Card"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "io-5",
+      "category": "integration-oriented",
+      "prompt": "Build a support ticket form with a subject line input, a description text area with character count, and a priority selector. Submit should post to /api/tickets.",
+      "expectedComponents": [
+        "TextInput",
+        "TextArea",
+        "Selector",
+        "Button"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ps-1",
+      "category": "page-setup",
+      "prompt": "Create a new page for a settings dashboard. It should have a header with the app title, a sidebar for navigation, and a main content area. Use the Astryx theme system.",
+      "expectedComponents": [
+        "Theme",
+        "Layout",
+        "LayoutHeader",
+        "LayoutContent",
+        "LayoutPanel"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ty-4",
+      "category": "typography",
+      "prompt": "Create a settings page with 3 sections. Each section needs a heading, a brief description, and some form controls. Use different heading levels for the page title vs section titles.",
+      "expectedComponents": [
+        "Heading",
+        "Text",
+        "TextInput"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "tc-4",
+      "category": "theme-customization",
+      "prompt": "Create a theme switcher that lets users pick between three themes: Default, Midnight (dark purple), and Earth (warm brown tones). Show a preview card for each theme.",
+      "expectedComponents": [
+        "Theme",
+        "Card",
+        "Button"
+      ],
+      "status": "pending"
+    }
+  ]
+}
