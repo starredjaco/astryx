@@ -136,22 +136,14 @@ const styles = stylex.create({
     backgroundColor: colorVars['--color-icon-primary'],
     opacity: 1,
   },
-  hoverBg: {
-    position: 'absolute',
-    inset: 0,
-    margin: 'auto',
-    width: '100%',
-    borderRadius: radiusVars['--radius-element'],
-    pointerEvents: 'none',
-    backgroundColor: {
-      default: 'transparent',
+  indicatorUnselected: {
+    backgroundColor: colorVars['--color-icon-primary'],
+    opacity: {
+      default: 0,
       [stylex.when.ancestor(':hover', tabScope)]: {
-        '@media (hover: hover)': colorVars['--color-overlay-hover'],
+        '@media (hover: hover)': 0.4,
       },
     },
-    transitionProperty: 'background-color',
-    transitionDuration: durationVars['--duration-fast'],
-    transitionTimingFunction: easeVars['--ease-standard'],
   },
   chevron: {
     width: spacingVars['--spacing-4'],
@@ -224,13 +216,6 @@ const styles = stylex.create({
 });
 
 const sizeStyles = stylex.create({
-  sm: {height: sizeVars['--size-element-sm']},
-  md: {height: sizeVars['--size-element-md']},
-  lg: {height: sizeVars['--size-element-lg']},
-});
-
-// Hover bg uses the standard element size (one step smaller than tab)
-const hoverSizeStyles = stylex.create({
   sm: {height: sizeVars['--size-element-sm']},
   md: {height: sizeVars['--size-element-md']},
   lg: {height: sizeVars['--size-element-lg']},
@@ -324,10 +309,6 @@ export function TabMenu({
           className,
           style,
         )}>
-        <span
-          aria-hidden="true"
-          {...stylex.props(styles.hoverBg, hoverSizeStyles[size])}
-        />
         <span {...stylex.props(styles.triggerLabel)}>
           <span {...stylex.props(styles.triggerLabelText)}>{triggerLabel}</span>
           <span aria-hidden="true" {...stylex.props(styles.triggerLabelSizer)}>
@@ -342,14 +323,19 @@ export function TabMenu({
           )}>
           <Icon icon="chevronDown" size="sm" color="inherit" />
         </span>
-        {hasSelectedOption && (
-          <span
-            {...mergeProps(
-              themeProps('tab-indicator', {selected: 'selected'}),
-              stylex.props(styles.indicator, styles.indicatorSelected),
-            )}
-          />
-        )}
+        <span
+          {...mergeProps(
+            themeProps('tab-indicator', {
+              selected: hasSelectedOption ? 'selected' : null,
+            }),
+            stylex.props(
+              styles.indicator,
+              hasSelectedOption
+                ? styles.indicatorSelected
+                : styles.indicatorUnselected,
+            ),
+          )}
+        />
       </button>
       {popover.render(
         <div

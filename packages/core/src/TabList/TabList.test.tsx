@@ -242,7 +242,7 @@ describe('TabList', () => {
     const tab = screen.getByRole('button', {name: 'Preview'});
     expect(tab).toBeInTheDocument();
     expect(screen.getByTestId('icon')).toBeInTheDocument();
-    expect(tab.querySelectorAll(':scope > span').length).toBe(3);
+    expect(tab.querySelectorAll(':scope > span').length).toBe(2);
   });
 
   it('renders selectedIcon when tab is selected', () => {
@@ -301,10 +301,10 @@ describe('TabList', () => {
 
     // The endContentWrapper span should not exist
     const button = screen.getByRole('button', {name: 'Home'});
-    // Button children: hoverBg, labelContainer, indicator (no endContent wrapper)
+    // Button children: labelContainer, indicator (no endContent wrapper)
     const spans = button.querySelectorAll(':scope > span');
-    // hoverBg + labelContainer + indicator = 3 spans
-    expect(spans.length).toBe(3);
+    // labelContainer + indicator = 2 spans
+    expect(spans.length).toBe(2);
   });
 
   it('renders endContent in link tabs', () => {

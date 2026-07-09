@@ -115,23 +115,6 @@ const styles = stylex.create({
       ':focus-visible': '2px',
     },
   },
-  hoverBg: {
-    position: 'absolute',
-    inset: 0,
-    margin: 'auto',
-    width: '100%',
-    borderRadius: radiusVars['--radius-element'],
-    pointerEvents: 'none',
-    backgroundColor: {
-      default: 'transparent',
-      [stylex.when.ancestor(':hover', tabScope)]: {
-        '@media (hover: hover)': colorVars['--color-overlay-hover'],
-      },
-    },
-    transitionProperty: 'background-color',
-    transitionDuration: durationVars['--duration-fast'],
-    transitionTimingFunction: easeVars['--ease-standard'],
-  },
   selected: {
     color: colorVars['--color-text-primary'],
     fontWeight: fontWeightVars['--font-weight-semibold'],
@@ -153,8 +136,13 @@ const styles = stylex.create({
     opacity: 1,
   },
   indicatorUnselected: {
-    backgroundColor: 'transparent',
-    opacity: 0,
+    backgroundColor: colorVars['--color-accent'],
+    opacity: {
+      default: 0,
+      [stylex.when.ancestor(':hover', tabScope)]: {
+        '@media (hover: hover)': 0.4,
+      },
+    },
   },
   icon: {
     display: 'inline-flex',
@@ -184,13 +172,6 @@ const styles = stylex.create({
 });
 
 const sizeStyles = stylex.create({
-  sm: {height: sizeVars['--size-element-sm']},
-  md: {height: sizeVars['--size-element-md']},
-  lg: {height: sizeVars['--size-element-lg']},
-});
-
-// Hover bg uses the standard element size (one step smaller than tab)
-const hoverSizeStyles = stylex.create({
   sm: {height: sizeVars['--size-element-sm']},
   md: {height: sizeVars['--size-element-md']},
   lg: {height: sizeVars['--size-element-lg']},
@@ -283,13 +264,6 @@ export function Tab({
     ),
   };
 
-  const hoverBgElement = (
-    <span
-      aria-hidden="true"
-      {...stylex.props(styles.hoverBg, hoverSizeStyles[size])}
-    />
-  );
-
   const indicatorElement = (
     <span
       {...mergeProps(
@@ -324,7 +298,6 @@ export function Tab({
         href={href}
         onClick={handleSelect}
         {...sharedProps}>
-        {hoverBgElement}
         {iconElement}
         {labelElement}
         {endContentElement}
@@ -335,7 +308,6 @@ export function Tab({
 
   return (
     <button ref={ref} type="button" onClick={handleSelect} {...sharedProps}>
-      {hoverBgElement}
       {iconElement}
       {labelElement}
       {endContentElement}
