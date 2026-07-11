@@ -211,3 +211,11 @@ export {
 // It is no longer re-exported from @astryxdesign/lab.
 export * from './Stepper';
 export * from './CircularProgress';
+
+// LogStream — experimental streaming log viewer
+export {
+  LogStream,
+  type LogStreamProps,
+  type LogEntry,
+  type LogStreamLevel,
+} from './LogStream';
