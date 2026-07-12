@@ -1,0 +1,80 @@
+{
+  "cwm-3": {
+    "target": "astryx-tailwind",
+    "errors": [
+      {
+        "line": 24,
+        "message": "Type '{ children: Element; isOpen: boolean; onOpenChange: Dispatch<SetStateAction<boolean>>; trigger: Element; }' is not assignable to type 'IntrinsicAttributes & PopoverProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 1,
+    "buildSuccess": false
+  },
+  "dd-4": {
+    "target": "astryx-tailwind",
+    "errors": [
+      {
+        "line": 14,
+        "message": "Type '\"lg\"' is not assignable to type 'AvatarSize | undefined'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 1,
+    "buildSuccess": false
+  },
+  "fwc-13": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "io-5": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ps-1": {
+    "target": "astryx-tailwind",
+    "errors": [
+      {
+        "line": 3,
+        "message": "Cannot find module '@astryxdesign/core/Navigation' or its corresponding type declarations.",
+        "code": "TS2307"
+      }
+    ],
+    "errorCount": 1,
+    "buildSuccess": false
+  },
+  "rc-3": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "sd-7": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "tc-4": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ty-6": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "wd-1": {
+    "target": "astryx-tailwind",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  }
+}
