@@ -1,0 +1,738 @@
+{
+  "averages": {
+    "correctness": 94,
+    "accessibility": 100,
+    "codeQuality": 99,
+    "efficiency": 80,
+    "maintainability": 98
+  },
+  "overall": 94,
+  "byPrompt": {
+    "cwm-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 88,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "{name: \"_\", monthly: N, annual: N, features: [\"_\", \"_\", \"_\"]},"
+          }
+        ],
+        "metrics": {
+          "totalLines": 55,
+          "codeLines": 51,
+          "stylingLines": 0,
+          "boilerplateLines": 7,
+          "logicLines": 44,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.13725490196078433,
+          "decisionsPerElement": 0.9,
+          "elementCount": 14,
+          "stylingDecisionCount": 12,
+          "duplicateRatio": 0.06
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 3,
+          "avgStateSpread": 25
+        }
+      }
+    },
+    "dd-5": {
+      "correctness": {
+        "score": 70,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type 'number' is not assignable to type 'ColumnWidth | undefined'.",
+            "line": 67
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type 'number' is not assignable to type 'ColumnWidth | undefined'.",
+            "line": 77
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 73,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 5 times",
+            "count": 5,
+            "example": "{id: \"_\", sender: \"_\", subject: \"_\", date: \"_\", preview: \"_\"},"
+          },
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "{label: \"_\", onClick: () => {}},"
+          },
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "{key: \"_\", header: \"_\"},"
+          }
+        ],
+        "metrics": {
+          "totalLines": 84,
+          "codeLines": 77,
+          "stylingLines": 0,
+          "boilerplateLines": 14,
+          "logicLines": 63,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.18181818181818182,
+          "decisionsPerElement": 0.6,
+          "elementCount": 7,
+          "stylingDecisionCount": 4,
+          "duplicateRatio": 0.14
+        }
+      },
+      "maintainability": {
+        "score": 92,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 0,
+          "avgStateSpread": 45
+        }
+      }
+    },
+    "fwc-8": {
+      "correctness": {
+        "score": 70,
+        "findings": [
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type 'DateRange | null' is not assignable to type 'import(\"/vercel/sandbox/repos/xds/packages/core/src/utils/dateTypes\").DateRange | null'.",
+            "line": 19
+          },
+          {
+            "rule": "type-error",
+            "severity": "critical",
+            "detail": "TS2322: Type 'string' is not assignable to type '`${number}${number}${number}${number}-${number}${number}-${number}${number}`'.",
+            "line": 21
+          }
+        ]
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 60,
+        "findings": [],
+        "metrics": {
+          "totalLines": 27,
+          "codeLines": 23,
+          "stylingLines": 0,
+          "boilerplateLines": 23,
+          "logicLines": 0,
+          "stylingRatio": 0,
+          "boilerplateRatio": 1,
+          "decisionsPerElement": 0.6,
+          "elementCount": 5,
+          "stylingDecisionCount": 3,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 1,
+          "avgStateSpread": 9
+        }
+      }
+    },
+    "io-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 89,
+        "findings": [
+          {
+            "rule": "duplicate-lines",
+            "severity": "moderate",
+            "detail": "Line repeated 3 times",
+            "count": 3,
+            "example": "setStatus({type: \"_\", message: \"_\"});"
+          }
+        ],
+        "metrics": {
+          "totalLines": 61,
+          "codeLines": 56,
+          "stylingLines": 0,
+          "boilerplateLines": 6,
+          "logicLines": 50,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.10714285714285714,
+          "decisionsPerElement": 1.4,
+          "elementCount": 5,
+          "stylingDecisionCount": 7,
+          "duplicateRatio": 0.05
+        }
+      },
+      "maintainability": {
+        "score": 92,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 3,
+          "avgStateSpread": 42
+        }
+      }
+    },
+    "ps-3": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 97,
+        "findings": [
+          {
+            "rule": "index-key",
+            "severity": "minor",
+            "detail": "Array index as key",
+            "line": 39
+          }
+        ]
+      },
+      "efficiency": {
+        "score": 92,
+        "findings": [],
+        "metrics": {
+          "totalLines": 56,
+          "codeLines": 52,
+          "stylingLines": 0,
+          "boilerplateLines": 10,
+          "logicLines": 42,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.19230769230769232,
+          "decisionsPerElement": 0.8,
+          "elementCount": 13,
+          "stylingDecisionCount": 10,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 4,
+          "avgStateSpread": 22
+        }
+      }
+    },
+    "rc-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 94,
+        "findings": [
+          {
+            "rule": "index-key",
+            "severity": "minor",
+            "detail": "Array index as key",
+            "line": 19
+          },
+          {
+            "rule": "index-key",
+            "severity": "minor",
+            "detail": "Array index as key",
+            "line": 32
+          }
+        ]
+      },
+      "efficiency": {
+        "score": 93,
+        "findings": [],
+        "metrics": {
+          "totalLines": 39,
+          "codeLines": 35,
+          "stylingLines": 0,
+          "boilerplateLines": 6,
+          "logicLines": 29,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.17142857142857143,
+          "decisionsPerElement": 1.1,
+          "elementCount": 8,
+          "stylingDecisionCount": 9,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 4,
+          "avgStateSpread": 18
+        }
+      }
+    },
+    "sd-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 60,
+        "findings": [],
+        "metrics": {
+          "totalLines": 45,
+          "codeLines": 40,
+          "stylingLines": 0,
+          "boilerplateLines": 40,
+          "logicLines": 0,
+          "stylingRatio": 0,
+          "boilerplateRatio": 1,
+          "decisionsPerElement": 0.7,
+          "elementCount": 14,
+          "stylingDecisionCount": 10,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 5,
+          "avgStateSpread": 23
+        }
+      }
+    },
+    "tc-4": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 95,
+        "findings": [],
+        "metrics": {
+          "totalLines": 68,
+          "codeLines": 61,
+          "stylingLines": 0,
+          "boilerplateLines": 8,
+          "logicLines": 53,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.13114754098360656,
+          "decisionsPerElement": 0.8,
+          "elementCount": 9,
+          "stylingDecisionCount": 7,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 1,
+          "avgStateSpread": 19
+        }
+      }
+    },
+    "ty-1": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 91,
+        "findings": [],
+        "metrics": {
+          "totalLines": 15,
+          "codeLines": 13,
+          "stylingLines": 0,
+          "boilerplateLines": 3,
+          "logicLines": 10,
+          "stylingRatio": 0,
+          "boilerplateRatio": 0.23076923076923078,
+          "decisionsPerElement": 1.3,
+          "elementCount": 3,
+          "stylingDecisionCount": 4,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 2,
+          "avgStateSpread": 0
+        }
+      }
+    },
+    "wd-3": {
+      "correctness": {
+        "score": 100,
+        "findings": []
+      },
+      "accessibility": {
+        "score": 100,
+        "findings": []
+      },
+      "codeQuality": {
+        "score": 100,
+        "findings": []
+      },
+      "efficiency": {
+        "score": 60,
+        "findings": [],
+        "metrics": {
+          "totalLines": 58,
+          "codeLines": 54,
+          "stylingLines": 0,
+          "boilerplateLines": 54,
+          "logicLines": 0,
+          "stylingRatio": 0,
+          "boilerplateRatio": 1,
+          "decisionsPerElement": 0.7,
+          "elementCount": 23,
+          "stylingDecisionCount": 17,
+          "duplicateRatio": 0
+        }
+      },
+      "maintainability": {
+        "score": 100,
+        "findings": [],
+        "metrics": {
+          "semanticRatio": 1,
+          "magicValueCount": 0,
+          "semanticValueCount": 6,
+          "avgStateSpread": 29
+        }
+      }
+    }
+  },
+  "byCategory": {
+    "clone-with-modification": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 88,
+      "maintainability": 100
+    },
+    "data-display": {
+      "correctness": 70,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 73,
+      "maintainability": 92
+    },
+    "feature-with-constraint": {
+      "correctness": 70,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 60,
+      "maintainability": 100
+    },
+    "integration-oriented": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 89,
+      "maintainability": 92
+    },
+    "page-setup": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 97,
+      "efficiency": 92,
+      "maintainability": 100
+    },
+    "responsive-context": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 94,
+      "efficiency": 93,
+      "maintainability": 100
+    },
+    "state-driven": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 60,
+      "maintainability": 100
+    },
+    "theme-customization": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 95,
+      "maintainability": 100
+    },
+    "typography": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 91,
+      "maintainability": 100
+    },
+    "workflow-description": {
+      "correctness": 100,
+      "accessibility": 100,
+      "codeQuality": 100,
+      "efficiency": 60,
+      "maintainability": 100
+    }
+  },
+  "darkModeRate": 0,
+  "cost": {
+    "totalDurationMs": 3111063,
+    "avgDurationMs": 311106,
+    "avgOutputChars": 1642,
+    "avgOutputLines": 51,
+    "avgDocsRead": 5.8,
+    "estimatedInputTokens": 40000,
+    "estimatedOutputTokens": 4109,
+    "byPrompt": {
+      "cwm-1": {
+        "durationMs": 311108,
+        "outputChars": 1939,
+        "outputLines": 55,
+        "docsRead": [
+          "Card",
+          "Button",
+          "Heading",
+          "Text",
+          "VStack",
+          "HStack"
+        ],
+        "estimatedInputTokens": 4125,
+        "estimatedOutputTokens": 485
+      },
+      "dd-5": {
+        "durationMs": 311107,
+        "outputChars": 2766,
+        "outputLines": 84,
+        "docsRead": [
+          "Table",
+          "CheckboxInput",
+          "DropdownMenu",
+          "Button",
+          "VStack",
+          "HStack"
+        ],
+        "estimatedInputTokens": 4125,
+        "estimatedOutputTokens": 692
+      },
+      "fwc-8": {
+        "durationMs": 311108,
+        "outputChars": 842,
+        "outputLines": 27,
+        "docsRead": [
+          "DateRangeInput",
+          "VStack",
+          "Heading",
+          "Text"
+        ],
+        "estimatedInputTokens": 2875,
+        "estimatedOutputTokens": 211
+      },
+      "io-1": {
+        "durationMs": 311106,
+        "outputChars": 1938,
+        "outputLines": 61,
+        "docsRead": [
+          "TextInput",
+          "Button",
+          "VStack",
+          "Heading",
+          "Text"
+        ],
+        "estimatedInputTokens": 3500,
+        "estimatedOutputTokens": 485
+      },
+      "ps-3": {
+        "durationMs": 311105,
+        "outputChars": 1769,
+        "outputLines": 56,
+        "docsRead": [
+          "Layout",
+          "LayoutHeader",
+          "LayoutContent",
+          "LayoutPanel",
+          "Button",
+          "Heading",
+          "Text",
+          "VStack",
+          "HStack"
+        ],
+        "estimatedInputTokens": 6000,
+        "estimatedOutputTokens": 442
+      },
+      "rc-1": {
+        "durationMs": 311106,
+        "outputChars": 1095,
+        "outputLines": 39,
+        "docsRead": [
+          "Button",
+          "HStack",
+          "VStack",
+          "Heading",
+          "Text"
+        ],
+        "estimatedInputTokens": 3500,
+        "estimatedOutputTokens": 274
+      },
+      "sd-1": {
+        "durationMs": 311107,
+        "outputChars": 1491,
+        "outputLines": 45,
+        "docsRead": [
+          "Card",
+          "Skeleton",
+          "Heading",
+          "Text",
+          "VStack",
+          "Button"
+        ],
+        "estimatedInputTokens": 4125,
+        "estimatedOutputTokens": 373
+      },
+      "tc-4": {
+        "durationMs": 311104,
+        "outputChars": 1871,
+        "outputLines": 68,
+        "docsRead": [
+          "Theme",
+          "Card",
+          "Button",
+          "Heading",
+          "Text",
+          "VStack",
+          "HStack"
+        ],
+        "estimatedInputTokens": 4750,
+        "estimatedOutputTokens": 468
+      },
+      "ty-1": {
+        "durationMs": 311104,
+        "outputChars": 450,
+        "outputLines": 15,
+        "docsRead": [
+          "Heading",
+          "Text",
+          "VStack"
+        ],
+        "estimatedInputTokens": 2250,
+        "estimatedOutputTokens": 113
+      },
+      "wd-3": {
+        "durationMs": 311108,
+        "outputChars": 2263,
+        "outputLines": 58,
+        "docsRead": [
+          "Card",
+          "Button",
+          "TextInput",
+          "Heading",
+          "Text",
+          "VStack",
+          "HStack"
+        ],
+        "estimatedInputTokens": 4750,
+        "estimatedOutputTokens": 566
+      }
+    }
+  }
+}
