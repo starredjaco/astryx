@@ -1,0 +1,89 @@
+{
+  "cwm-2": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 62,
+        "message": "Type '{ children: Element; trigger: Element; title: string; }' is not assignable to type 'IntrinsicAttributes & PopoverProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 79,
+        "message": "Type '{ label: string; isLabelHidden: true; isChecked: boolean; onChange: () => void; }' is not assignable to type 'IntrinsicAttributes & CheckboxInputProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 2,
+    "buildSuccess": false
+  },
+  "dd-8": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "fwc-14": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "io-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ps-2": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 2,
+        "message": "Cannot find module '@astryxdesign/theme-neutral' or its corresponding type declarations.",
+        "code": "TS2307"
+      },
+      {
+        "line": 13,
+        "message": "Type '{ children: Element; header: Element; }' is not assignable to type 'IntrinsicAttributes & AppShellProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 15,
+        "message": "Type '{ logo: Element; }' is not assignable to type 'IntrinsicAttributes & TopNavProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 3,
+    "buildSuccess": false
+  },
+  "rc-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "sd-7": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "tc-5": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ty-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "wd-5": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  }
+}
