@@ -47,15 +47,16 @@ describe('generateCompressedIndex', () => {
     const result = generateCompressedIndex('1.0.0');
     expect(result).toContain('SELF-CHECK before you finish');
     expect(result).toMatch(/re-read the file/);
-    expect(result).toMatch(/you veered off Astryx/);
+    expect(result).toMatch(/don't hand-roll CSS/);
   });
 
-  it('tailors the self-check marker list to the styling system', () => {
-    // className is a veer in the xstyle/StyleX path
+  it('tailors the self-check to the styling system (xstyle for StyleX, not className for Tailwind)', () => {
+    // StyleX path: className/inline style are veers; the fix is the xstyle prop + a token
     const stylex = generateCompressedIndex('1.0.0', {stylingSystem: 'stylex'});
     const stylexSelfCheck = stylex.split('\n').find(l => l.includes('SELF-CHECK'));
+    expect(stylexSelfCheck).toMatch(/xstyle/);
     expect(stylexSelfCheck).toMatch(/className=/);
-    // className IS the system in Tailwind — it must NOT be listed as a veer marker
+    // className IS the system in Tailwind — it must NOT be flagged
     const tailwind = generateCompressedIndex('1.0.0', {stylingSystem: 'tailwind'});
     const tailwindSelfCheck = tailwind.split('\n').find(l => l.includes('SELF-CHECK'));
     expect(tailwindSelfCheck).toBeDefined();
