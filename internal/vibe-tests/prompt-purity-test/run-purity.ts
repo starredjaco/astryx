@@ -84,9 +84,9 @@ function startSnapshotter(targetFile: string, snapDir: string) {
 
   const capture = () => {
     try {
-      if (!fs.existsSync(targetFile)) return;
+      if (!fs.existsSync(targetFile)) {return;}
       const content = fs.readFileSync(targetFile, 'utf-8');
-      if (content === last) return;
+      if (content === last) {return;}
       last = content;
       const name = `${String(seq++).padStart(4, '0')}-${Date.now()}.tsx`;
       fs.writeFileSync(path.join(snapDir, name), content);
@@ -101,8 +101,8 @@ function startSnapshotter(targetFile: string, snapDir: string) {
   let watcher: fs.FSWatcher | null = null;
   try {
     watcher = fs.watch(dir, (_event, filename) => {
-      if (filename && filename.toString() !== base) return;
-      if (debounce) clearTimeout(debounce);
+      if (filename && filename.toString() !== base) {return;}
+      if (debounce) {clearTimeout(debounce);}
       debounce = setTimeout(capture, 80);
     });
   } catch {
@@ -112,7 +112,7 @@ function startSnapshotter(targetFile: string, snapDir: string) {
 
   return {
     stop: () => {
-      if (debounce) clearTimeout(debounce);
+      if (debounce) {clearTimeout(debounce);}
       clearInterval(poll);
       try {
         watcher?.close();
@@ -132,7 +132,7 @@ async function pool<T, R>(items: T[], limit: number, worker: (item: T, i: number
   const runners = Array.from({length: Math.min(Math.max(1, limit), items.length || 1)}, async () => {
     while (true) {
       const i = cursor++;
-      if (i >= items.length) break;
+      if (i >= items.length) {break;}
       results[i] = await worker(items[i], i);
     }
   });
@@ -154,7 +154,7 @@ function runOne(cfg: {model: string; agent: string; timeoutMs: number}, task: Ta
     let done = false;
     let transcriptBuf = '';
     const finalize = (status: string, error: string | null) => {
-      if (done) return;
+      if (done) {return;}
       done = true;
       snap.stop();
       const snapshotCount = fs.existsSync(snapDir) ? fs.readdirSync(snapDir).filter(f => f.endsWith('.tsx')).length : 0;
@@ -202,20 +202,20 @@ function runOne(cfg: {model: string; agent: string; timeoutMs: number}, task: Ta
     let child;
     try {
       child = spawn(cfg.agent, args, {cwd: task.projectDir, env: process.env});
-    } catch (e: any) {
-      finalize('startup_error', e?.message ?? String(e));
+    } catch (e) {
+      finalize('startup_error', e instanceof Error ? e.message : String(e));
       return;
     }
 
     const out = fs.createWriteStream(transcriptPath);
     child.stdout.on('data', d => {
       const s = d.toString();
-      if (transcriptBuf.length < 8_000_000) transcriptBuf += s; // keep in memory to parse the result line
+      if (transcriptBuf.length < 8_000_000) {transcriptBuf += s;} // keep in memory to parse the result line
       out.write(s); // persist full transcript to disk
     });
     let stderr = '';
     child.stderr.on('data', d => {
-      if (stderr.length < 4000) stderr += d.toString();
+      if (stderr.length < 4000) {stderr += d.toString();}
     });
 
     let killed = false;
@@ -235,9 +235,9 @@ function runOne(cfg: {model: string; agent: string; timeoutMs: number}, task: Ta
       }, 5000);
     }, cfg.timeoutMs);
 
-    child.on('error', (e: any) => {
+    child.on('error', (e: NodeJS.ErrnoException) => {
       clearTimeout(timer);
-      finalize(e?.code === 'ENOENT' ? 'startup_error' : 'exception', e?.message ?? String(e));
+      finalize(e.code === 'ENOENT' ? 'startup_error' : 'exception', e.message || String(e));
     });
     child.on('close', code => {
       clearTimeout(timer);
@@ -255,14 +255,19 @@ function parseArgs(argv: string[]) {
     const i = argv.indexOf(flag);
     return i !== -1 ? argv[i + 1] : undefined;
   };
+  const getInt = (flag: string, def: number) => {
+    const v = get(flag);
+    return v ? parseInt(v, 10) : def;
+  };
+  const conditions = get('--conditions');
   return {
     experiment: get('--experiment'),
     out: get('--out'),
-    concurrency: get('--concurrency') ? parseInt(get('--concurrency')!, 10) : 3,
+    concurrency: getInt('--concurrency', 3),
     model: get('--model') ?? DEFAULT_MODEL,
     agent: get('--agent') ?? DEFAULT_AGENT,
-    timeoutMs: get('--timeout') ? parseInt(get('--timeout')!, 10) : DEFAULT_TIMEOUT_MS,
-    conditions: get('--conditions') ? get('--conditions')!.split(',').map(s => s.trim()) : undefined,
+    timeoutMs: getInt('--timeout', DEFAULT_TIMEOUT_MS),
+    conditions: conditions ? conditions.split(',').map(s => s.trim()) : undefined,
     dryRun: argv.includes('--dry-run'),
   };
 }
@@ -271,7 +276,7 @@ function loadTasks(configDirs: Record<string, string>, conditions: string[]): Ta
   const perCond: TaskFile[][] = [];
   for (const cond of conditions) {
     const condDir = configDirs[cond];
-    if (!condDir) throw new Error(`Condition "${cond}" not found in config.conditionDirs`);
+    if (!condDir) {throw new Error(`Condition "${cond}" not found in config.conditionDirs`);}
     const tasksDir = path.join(condDir, 'tasks');
     const arr: TaskFile[] = [];
     if (fs.existsSync(tasksDir)) {
@@ -285,7 +290,7 @@ function loadTasks(configDirs: Record<string, string>, conditions: string[]): Ta
   // single condition monopolizes an early rate-limit window.
   const tasks: TaskFile[] = [];
   const max = Math.max(0, ...perCond.map(a => a.length));
-  for (let i = 0; i < max; i++) for (const arr of perCond) if (i < arr.length) tasks.push(arr[i]);
+  for (let i = 0; i < max; i++) {for (const arr of perCond) {if (i < arr.length) {tasks.push(arr[i]);}}}
   return tasks;
 }
 
@@ -345,13 +350,13 @@ async function main() {
     return;
   }
 
-  if (!checkAgent(args.agent)) process.exit(1);
+  if (!checkAgent(args.agent)) {process.exit(1);}
 
   const t0 = Date.now();
   const results = await pool(tasks, args.concurrency, task => runOne({model: args.model, agent: args.agent, timeoutMs: args.timeoutMs}, task));
 
   const byStatus: Record<string, number> = {};
-  for (const r of results) byStatus[r.status] = (byStatus[r.status] ?? 0) + 1;
+  for (const r of results) {byStatus[r.status] = (byStatus[r.status] ?? 0) + 1;}
   console.log(`\nDone in ${((Date.now() - t0) / 1000).toFixed(0)}s. Status: ${Object.entries(byStatus).map(([k, v]) => `${k}=${v}`).join(', ')}`);
   console.log(`\nNext: npx tsx ${path.relative(process.cwd(), path.join(import.meta.dirname, 'purity-aggregate.ts'))} --experiment ${args.experiment}${args.out ? ` --out ${args.out}` : ''}\n`);
 }

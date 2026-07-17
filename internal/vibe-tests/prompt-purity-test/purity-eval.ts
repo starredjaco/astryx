@@ -68,7 +68,7 @@ function extractClassNameLiterals(code: string): string[] {
   let m: RegExpExecArray | null;
   while ((m = re.exec(code)) !== null) {
     const val = m[1] ?? m[2] ?? m[3] ?? m[4] ?? m[5];
-    if (val) out.push(val);
+    if (val) {out.push(val);}
   }
   return out;
 }
@@ -83,7 +83,7 @@ function countTailwindTokens(code: string): {count: number; example: string} {
     for (const tok of literal.split(/\s+/).filter(Boolean)) {
       if (TW_TOKEN.test(tok)) {
         count++;
-        if (!example) example = tok;
+        if (!example) {example = tok;}
       }
     }
   }
@@ -123,7 +123,7 @@ export function detectMarkers(code: string): MarkerHit[] {
   const hits: MarkerHit[] = [];
   for (const d of DETECTORS) {
     const {count, example} = d.detect(code);
-    if (count > 0) hits.push({type: d.type, severity: d.severity, count, example});
+    if (count > 0) {hits.push({type: d.type, severity: d.severity, count, example});}
   }
   return hits;
 }
@@ -148,7 +148,7 @@ const PENALTY: Record<VeerType, {weight: number; cap: number}> = {
 
 /** 0-100 purity of a single code string (100 = pure Astryx, 0 = drowning in raw CSS/TW). */
 export function purityScore(code: string): number {
-  if (!code || !code.trim()) return 0;
+  if (!code || !code.trim()) {return 0;}
   let penalty = 0;
   for (const h of detectMarkers(code)) {
     const {weight, cap} = PENALTY[h.type];
@@ -214,7 +214,10 @@ export function classifyTimeline(
  */
 export async function gradedQuality(code: string): Promise<number | null> {
   try {
-    const mod: any = await import('../src/universal-eval.js');
+    const mod = (await import('../src/universal-eval.js')) as {
+      evaluate: (code: string, target: string) => unknown;
+      getAverageScore?: (score: unknown) => number;
+    };
     const score = mod.evaluate(code, 'astryx');
     return typeof mod.getAverageScore === 'function' ? mod.getAverageScore(score) : null;
   } catch {
@@ -281,15 +284,22 @@ const numOrNull = (v: unknown): number | null => (typeof v === 'number' && Numbe
  * Tolerant to camelCase (cursor-agent) and snake_case (Claude-style) field names.
  */
 export function parseResultFromText(text: string): AgentResult | null {
-  if (!text) return null;
+  if (!text) {return null;}
   const lines = text.split('\n');
   for (let i = lines.length - 1; i >= 0; i--) {
     const line = lines[i];
-    if (!line.includes('"type":"result"') && !line.includes('"type": "result"')) continue;
+    if (!line.includes('"type":"result"') && !line.includes('"type": "result"')) {continue;}
     try {
-      const ev: any = JSON.parse(line);
-      if (ev?.type !== 'result') continue;
-      const u = ev.usage ?? {};
+      const ev = JSON.parse(line) as {
+        type?: string;
+        subtype?: string;
+        is_error?: boolean;
+        duration_ms?: number;
+        duration_api_ms?: number;
+        usage?: Record<string, unknown>;
+      };
+      if (ev?.type !== 'result') {continue;}
+      const u: Record<string, unknown> = ev.usage ?? {};
       const usage: TokenUsage = {
         inputTokens: numOrNull(u.inputTokens ?? u.input_tokens) ?? 0,
         outputTokens: numOrNull(u.outputTokens ?? u.output_tokens) ?? 0,

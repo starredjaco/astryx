@@ -32,9 +32,9 @@ function check(name: string, fn: () => void) {
     fn();
     passed++;
     console.log(`  PASS  ${name}`);
-  } catch (e: any) {
+  } catch (e) {
     failures++;
-    console.error(`  FAIL  ${name}\n        ${e?.message ?? e}`);
+    console.error(`  FAIL  ${name}\n        ${e instanceof Error ? e.message : String(e)}`);
   }
 }
 
@@ -44,8 +44,8 @@ function softCheck(name: string, fn: () => void) {
     fn();
     passed++;
     console.log(`  PASS  ${name}`);
-  } catch (e: any) {
-    console.warn(`  WARN  ${name}\n        ${e?.message ?? e}`);
+  } catch (e) {
+    console.warn(`  WARN  ${name}\n        ${e instanceof Error ? e.message : String(e)}`);
   }
 }
 
@@ -198,10 +198,10 @@ softCheck('dry-run creates run.json with status "dry-run"', () => {
       stdio: 'pipe',
       cwd: EXP_DIR,
     });
-  } catch (e: any) {
+  } catch (e) {
     // Non-fatal: environment may not resolve `npx tsx` here. The classifier + wiring
     // checks are the load-bearing ones; surface this as a soft note instead.
-    throw new Error(`could not run dry-run via "npx tsx" (${e?.message ?? e}) — run it manually to verify`);
+    throw new Error(`could not run dry-run via "npx tsx" (${e instanceof Error ? e.message : String(e)}) — run it manually to verify`, {cause: e});
   }
   const runJson = path.join(smokeOut, expId, 'A-control', 'runs', 'dd-1', 'run.json');
   assert.ok(fs.existsSync(runJson), 'run.json not created by dry-run');

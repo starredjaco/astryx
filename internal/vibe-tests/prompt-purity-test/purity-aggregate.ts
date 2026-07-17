@@ -35,7 +35,7 @@ function sandboxBase(out?: string): string {
 
 /** Wilson score interval for a binomial proportion (95% by default). */
 function wilson(successes: number, n: number, z = 1.96): {p: number; lo: number; hi: number} {
-  if (n === 0) return {p: 0, lo: 0, hi: 0};
+  if (n === 0) {return {p: 0, lo: 0, hi: 0};}
   const phat = successes / n;
   const z2 = z * z;
   const denom = 1 + z2 / n;
@@ -51,7 +51,7 @@ interface Rate {
   lo: number;
   hi: number;
 }
-function rate(items: unknown[], pick: (x: any) => boolean): Rate {
+function rate<T>(items: T[], pick: (x: T) => boolean): Rate {
   const s = items.filter(pick).length;
   const {p, lo, hi} = wilson(s, items.length);
   return {count: s, n: items.length, pct: p, lo, hi};
@@ -77,7 +77,7 @@ interface RunResult {
 
 function readSnapshots(runDir: string): string[] {
   const snapDir = path.join(runDir, 'snapshots');
-  if (!fs.existsSync(snapDir)) return [];
+  if (!fs.existsSync(snapDir)) {return [];}
   return fs
     .readdirSync(snapDir)
     .filter(f => f.endsWith('.tsx'))
@@ -87,16 +87,16 @@ function readSnapshots(runDir: string): string[] {
 
 function readTranscriptText(runDir: string, cap = 200_000): string {
   const p = path.join(runDir, 'transcript.jsonl');
-  if (!fs.existsSync(p)) return '';
+  if (!fs.existsSync(p)) {return '';}
   let text = '';
   for (const line of fs.readFileSync(p, 'utf-8').split('\n')) {
-    if (!line.trim()) continue;
+    if (!line.trim()) {continue;}
     try {
-      const ev: any = JSON.parse(line);
+      const ev = JSON.parse(line) as {message?: {content?: unknown}; text?: unknown};
       const content = ev?.message?.content;
       if (Array.isArray(content)) {
-        for (const block of content) {
-          if (block?.type === 'text' && typeof block.text === 'string') text += block.text + '\n';
+        for (const block of content as Array<{type?: string; text?: string}>) {
+          if (block?.type === 'text' && typeof block.text === 'string') {text += block.text + '\n';}
         }
       } else if (typeof ev?.text === 'string') {
         text += ev.text + '\n';
@@ -104,7 +104,7 @@ function readTranscriptText(runDir: string, cap = 200_000): string {
     } catch {
       /* skip malformed line */
     }
-    if (text.length > cap) break;
+    if (text.length > cap) {break;}
   }
   return text;
 }
@@ -114,7 +114,7 @@ function subcommand(argv: string[]): string | null {
 }
 
 function readInvocationLog(logPath: string): {commands: string[]; subs: string[]} {
-  if (!fs.existsSync(logPath)) return {commands: [], subs: []};
+  if (!fs.existsSync(logPath)) {return {commands: [], subs: []};}
   const entries = fs
     .readFileSync(logPath, 'utf-8')
     .trim()
@@ -134,12 +134,22 @@ function readInvocationLog(logPath: string): {commands: string[]; subs: string[]
   };
 }
 
-function evaluateRun(task: any): RunResult {
+interface TaskRecord {
+  taskId: string;
+  basePromptId: string;
+  category: string;
+  condition: string;
+  runDir: string;
+  outputFile?: string;
+  invocationLog: string;
+}
+
+function evaluateRun(task: TaskRecord): RunResult {
   const versions = readSnapshots(task.runDir);
   // Fallback: if no snapshots were captured but a final file exists, classify that.
   if (versions.length === 0 && task.outputFile && fs.existsSync(task.outputFile)) {
     const finalContent = fs.readFileSync(task.outputFile, 'utf-8');
-    if (finalContent.trim()) versions.push(finalContent);
+    if (finalContent.trim()) {versions.push(finalContent);}
   }
   const transcriptText = readTranscriptText(task.runDir);
   const cls = classifyTimeline(versions, {transcriptText});
@@ -197,7 +207,7 @@ function evaluateRun(task: any): RunResult {
 
 function conditionRuns(condDir: string): RunResult[] {
   const tasksDir = path.join(condDir, 'tasks');
-  if (!fs.existsSync(tasksDir)) return [];
+  if (!fs.existsSync(tasksDir)) {return [];}
   return fs
     .readdirSync(tasksDir)
     .filter(f => f.endsWith('.json'))
@@ -223,14 +233,15 @@ interface CostBlock {
 }
 
 function costOf(runs: RunResult[]): CostBlock {
-  const withU = runs.filter(r => r.usage);
   let usage = emptyUsage();
   let estCostUSD = 0;
-  for (const r of withU) {
-    usage = addUsage(usage, r.usage!);
+  let n = 0;
+  for (const r of runs) {
+    if (!r.usage) {continue;}
+    usage = addUsage(usage, r.usage);
     estCostUSD += r.estCostUSD ?? 0;
+    n++;
   }
-  const n = withU.length;
   return {
     n,
     inputTokens: usage.inputTokens,
@@ -245,9 +256,9 @@ function costOf(runs: RunResult[]): CostBlock {
 
 function costByPrompt(runs: RunResult[]): Record<string, CostBlock> {
   const groups: Record<string, RunResult[]> = {};
-  for (const r of runs) (groups[r.basePromptId] ??= []).push(r);
+  for (const r of runs) {(groups[r.basePromptId] ??= []).push(r);}
   const out: Record<string, CostBlock> = {};
-  for (const [pid, rs] of Object.entries(groups)) out[pid] = costOf(rs);
+  for (const [pid, rs] of Object.entries(groups)) {out[pid] = costOf(rs);}
   return out;
 }
 
@@ -271,7 +282,18 @@ function main() {
   const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
   const control: string = config.control ?? 'A-control';
 
-  const perCondition: Record<string, any> = {};
+  type CondReport = {
+    n: number;
+    completed: Rate;
+    neverVeered: Rate;
+    caughtGivenVeered: Rate;
+    veeredUncaught: Rate;
+    ranDocRetrieval: Rate;
+    finalPurityMean: number;
+    cost: CostBlock & {byPrompt: Record<string, CostBlock>};
+    runs: unknown[];
+  };
+  const perCondition: Record<string, CondReport> = {};
   const summary: Record<string, unknown> = {
     experimentId: expId,
     generatedAt: new Date().toISOString(),
@@ -342,7 +364,7 @@ function main() {
   if (base) {
     console.log(`\nvs control (${control}) — lower veeredUncaught + higher purity is better:\n`);
     for (const cond of config.conditions as string[]) {
-      if (cond === control) continue;
+      if (cond === control) {continue;}
       const c = perCondition[cond];
       const vuDelta = (c.veeredUncaught.pct - base.veeredUncaught.pct) * 100;
       const purDelta = c.finalPurityMean - base.finalPurityMean;
