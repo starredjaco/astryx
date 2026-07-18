@@ -43,6 +43,7 @@ const {
   target: DOCSITE_TARGET,
   contentRoot: CONTENT_ROOT,
   cliRoot: CLI_ROOT,
+  coreRoot: CORE_ROOT,
 } = resolveContentRoot();
 
 console.log(
@@ -984,7 +985,7 @@ export const groupedComponents: Record<string, GroupedComponents> = ${JSON.strin
 async function generateBlockRegistry() {
   console.log('Generating block registry...');
 
-  const BLOCKS_DIR = path.join(CLI_ROOT, 'templates', 'blocks');
+  const BLOCKS_DIR = path.join(CORE_ROOT, 'templates', 'blocks');
   const docFiles = findDocFilesRecursive(BLOCKS_DIR);
   const blocks = [];
 
@@ -1091,7 +1092,7 @@ export const showcaseCount = ${showcaseCount};
 async function generateTemplateRegistry() {
   console.log('Generating template registry...');
 
-  const PAGES_DIR = path.join(CLI_ROOT, 'templates', 'pages');
+  const PAGES_DIR = path.join(CORE_ROOT, 'templates', 'pages');
   if (!fs.existsSync(PAGES_DIR)) {
     writeRegistry('templateRegistry.ts', `// Auto-generated — no templates found\nexport const templates = [];\nexport const templateCount = 0;\n`);
     return {templates: [], templateCount: 0};
@@ -1355,7 +1356,7 @@ ${body}
 function generateShowcaseRegistry() {
   console.log('Generating showcase registry...');
 
-  const BLOCKS_DIR = path.join(CLI_ROOT, 'templates', 'blocks');
+  const BLOCKS_DIR = path.join(CORE_ROOT, 'templates', 'blocks');
   const SHOWCASE_OUT = path.join(OUT_DIR, 'showcases');
 
   // Clean and recreate
@@ -1433,7 +1434,7 @@ ${importLines}
 function generateExampleRegistry() {
   console.log('Generating example registry...');
 
-  const BLOCKS_DIR = path.join(CLI_ROOT, 'templates', 'blocks');
+  const BLOCKS_DIR = path.join(CORE_ROOT, 'templates', 'blocks');
   const EXAMPLES_OUT = path.join(OUT_DIR, 'examples');
 
   if (fs.existsSync(EXAMPLES_OUT)) {

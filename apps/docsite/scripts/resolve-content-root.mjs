@@ -231,6 +231,7 @@ export function resolveContentRoot() {
       target,
       contentRoot: REPO_ROOT,
       cliRoot: path.join(REPO_ROOT, 'packages', 'cli'),
+      coreRoot: path.join(REPO_ROOT, 'packages', 'core'),
       version: null,
     };
   }
@@ -244,13 +245,15 @@ export function resolveContentRoot() {
     // DATA (component .doc.mjs prop tables, package.json versions, READMEs) is
     // read from the published release — that's the point of `latest`.
     contentRoot,
-    // EXECUTABLE content (CLI templates: showcases, examples, blocks, pages,
-    // long-form docs) is LIVE-RENDERED as React and always resolves
-    // @astryxdesign/core from node_modules — i.e. the version the docsite
-    // bundles. Pinning it would make a stale release's demo use API the bundled
-    // core no longer exposes, breaking render AND typecheck. So it always comes
-    // from the real workspace; only the documented DATA is pinned.
+    // EXECUTABLE content (templates: showcases, examples, blocks, pages) is
+    // LIVE-RENDERED as React and always resolves @astryxdesign/core from
+    // node_modules — i.e. the version the docsite bundles. Pinning it would make
+    // a stale release's demo use API the bundled core no longer exposes,
+    // breaking render AND typecheck. So it always comes from the real
+    // workspace; only the documented DATA is pinned. Templates live in core;
+    // long-form CLI docs still live in the CLI package.
     cliRoot: path.join(REPO_ROOT, 'packages', 'cli'),
+    coreRoot: path.join(REPO_ROOT, 'packages', 'core'),
     version,
   };
 }
