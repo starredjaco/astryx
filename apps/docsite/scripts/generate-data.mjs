@@ -1089,22 +1089,24 @@ export const showcaseCount = ${showcaseCount};
 
 // ── 4. Template Registry ───────────────────────────────────────────────
 
-async function generateTemplateRegistry() {
-  console.log('Generating template registry...');
-
-  const PAGES_DIR = path.join(CORE_ROOT, 'templates', 'pages');
-  if (!fs.existsSync(PAGES_DIR)) {
-    writeRegistry('templateRegistry.ts', `// Auto-generated — no templates found\nexport const templates = [];\nexport const templateCount = 0;\n`);
-    return {templates: [], templateCount: 0};
-  }
+/**
+ * Collect page templates from one `templates/pages` root. Templates live in
+ * core (core-owned components) and in packages that own the components they
+ * showcase — e.g. chart/heatmap templates ship with @astryxdesign/charts and
+ * @astryxdesign/lab, which sit above core and so cannot live in it.
+ */
+async function collectPageTemplates(pagesDir) {
+  if (!fs.existsSync(pagesDir)) return [];
 
   const templates = [];
-  const dirs = fs.readdirSync(PAGES_DIR, {withFileTypes: true}).filter(e => e.isDirectory());
+  const dirs = fs
+    .readdirSync(pagesDir, {withFileTypes: true})
+    .filter(e => e.isDirectory());
 
   for (const dir of dirs) {
-    const docPath = path.join(PAGES_DIR, dir.name, 'template.doc.mjs');
+    const docPath = path.join(pagesDir, dir.name, 'template.doc.mjs');
     if (!fs.existsSync(docPath)) continue;
-    const pagePath = path.join(PAGES_DIR, dir.name, 'page.tsx');
+    const pagePath = path.join(pagesDir, dir.name, 'page.tsx');
     if (!fs.existsSync(pagePath)) continue;
 
     let doc;
@@ -1131,6 +1133,36 @@ async function generateTemplateRegistry() {
       isHiddenFromOverview: doc.isHiddenFromOverview ?? false,
       source,
     });
+  }
+  return templates;
+}
+
+async function generateTemplateRegistry() {
+  console.log('Generating template registry...');
+
+  // Page templates ship in core plus any package that owns the components a
+  // template showcases (charts/lab). Read all such roots so hidden chart/
+  // heatmap demo templates stay reachable by slug in the docsite.
+  const pageRoots = [
+    path.join(CORE_ROOT, 'templates', 'pages'),
+    path.join(REPO_ROOT, 'packages', 'charts', 'templates', 'pages'),
+    path.join(REPO_ROOT, 'packages', 'lab', 'templates', 'pages'),
+  ];
+
+  const collected = await Promise.all(pageRoots.map(collectPageTemplates));
+  const templates = [];
+  const seen = new Set();
+  for (const group of collected) {
+    for (const t of group) {
+      if (seen.has(t.slug)) continue;
+      seen.add(t.slug);
+      templates.push(t);
+    }
+  }
+
+  if (templates.length === 0) {
+    writeRegistry('templateRegistry.ts', `// Auto-generated — no templates found\nexport const templates = [];\nexport const templateCount = 0;\n`);
+    return {templates: [], templateCount: 0};
   }
 
   templates.sort((a, b) => a.name.localeCompare(b.name));
