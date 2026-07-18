@@ -1,0 +1,430 @@
+{
+  "cwm-2": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 34,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 47,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 64,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 64,
+        "message": "Type 'true' is not assignable to type '\"nowrap\" | \"wrap\" | \"wrap-reverse\" | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 68,
+        "message": "Type '{ children: string | undefined; key: string; color: string | undefined; }' is not assignable to type 'IntrinsicAttributes & BadgeProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 5,
+    "buildSuccess": false
+  },
+  "dd-6": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 28,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 32,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 34,
+        "message": "Type '{ children: Element; trigger: Element; }' is not assignable to type 'IntrinsicAttributes & HoverCardProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 40,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 41,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 42,
+        "message": "Type '\"lg\"' is not assignable to type 'AvatarSize | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 43,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 49,
+        "message": "Type '{ children: string; size: \"sm\"; onPress: () => Window | null; }' is not assignable to type 'IntrinsicAttributes & ButtonProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 54,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      }
+    ],
+    "errorCount": 9,
+    "buildSuccess": false
+  },
+  "fwc-15": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 24,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 37,
+        "message": "Property 'Header' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 38,
+        "message": "Property 'Row' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 39,
+        "message": "Property 'HeaderCell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 39,
+        "message": "Property 'HeaderCell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 40,
+        "message": "Property 'HeaderCell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 40,
+        "message": "Property 'HeaderCell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 41,
+        "message": "Property 'Row' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 42,
+        "message": "Property 'Header' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 43,
+        "message": "Property 'Body' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 45,
+        "message": "Property 'Row' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 46,
+        "message": "Property 'Cell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 46,
+        "message": "Property 'Cell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 47,
+        "message": "Property 'Cell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 47,
+        "message": "Property 'Cell' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 48,
+        "message": "Property 'Row' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 50,
+        "message": "Property 'Body' does not exist on type '<T extends Record<string, unknown>>(props: TableProps<T> & { ref?: Ref<HTMLTableElement> | undefined; }) => ReactElement<unknown, string | JSXElementConstructor<any>>'.",
+        "code": "TS2339"
+      }
+    ],
+    "errorCount": 17,
+    "buildSuccess": false
+  },
+  "io-1": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 43,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 55,
+        "message": "Type '{ children: string; variant: string; }' is not assignable to type 'IntrinsicAttributes & BannerProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 57,
+        "message": "Type '{ children: string; onPress: () => Promise<void>; isDisabled: boolean; }' is not assignable to type 'IntrinsicAttributes & ButtonProps'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 3,
+    "buildSuccess": false
+  },
+  "ps-4": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 11,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 20,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 29,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 30,
+        "message": "Type '{ children: string; onPress: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 31,
+        "message": "Type '\"outlined\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 5,
+    "buildSuccess": false
+  },
+  "rc-3": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 18,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 20,
+        "message": "Object literal may only specify known properties, and 'base' does not exist in type '{ minWidth: number; max?: number | undefined; repeat?: \"fill\" | \"fit\" | undefined; }'.",
+        "code": "TS2353"
+      },
+      {
+        "line": 20,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 23,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 4,
+    "buildSuccess": false
+  },
+  "sd-1": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 40,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 44,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 45,
+        "message": "Type '{ children: string; variant: string; }' is not assignable to type 'IntrinsicAttributes & BannerProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 46,
+        "message": "Type '\"outlined\"' is not assignable to type 'keyof ButtonVariantMap | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 50,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      }
+    ],
+    "errorCount": 5,
+    "buildSuccess": false
+  },
+  "tc-10": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  },
+  "ty-10": {
+    "target": "astryx",
+    "errors": [
+      {
+        "line": 15,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 16,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 22,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 23,
+        "message": "Type '\"sm\"' is not assignable to type 'AvatarSize | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 24,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 33,
+        "message": "Type 'string' is not assignable to type 'SpacingStep | undefined'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 48,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 48,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 49,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 49,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 50,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 50,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 51,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 51,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 60,
+        "message": "Type '{ children: string; language: string; }' is not assignable to type 'IntrinsicAttributes & CodeBlockProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 71,
+        "message": "Type '{ children: Element[]; ordered: true; }' is not assignable to type 'IntrinsicAttributes & ListProps'.",
+        "code": "TS2322"
+      },
+      {
+        "line": 72,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 72,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 73,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 73,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 74,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 74,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 75,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      },
+      {
+        "line": 75,
+        "message": "Property 'Item' does not exist on type 'typeof List'.",
+        "code": "TS2339"
+      }
+    ],
+    "errorCount": 24,
+    "buildSuccess": false
+  },
+  "wd-3": {
+    "target": "astryx",
+    "errors": [],
+    "errorCount": 0,
+    "buildSuccess": true
+  }
+}
