@@ -1,0 +1,60 @@
+{
+  "name": "@astryxdesign/astryx-tanstack",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Astryx bindings for TanStack Form \u2014 thin bridge components connecting TanStack Form fields to Astryx inputs. Experimental; used by the form-framework vibe test. Never published.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/facebook/astryx#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/astryx.git",
+    "directory": "packages/astryx-tanstack"
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/astryx/issues"
+  },
+  "keywords": [
+    "astryx",
+    "forms",
+    "tanstack",
+    "design-system"
+  ],
+  "astryx": {
+    "canaryOnly": true,
+    "_comment": "Experimental adapter for the vibe test. private:true \u2014 never publish."
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.tsx",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prepack": "pnpm build",
+    "build": "rm -rf dist && pnpm build:esm && tsc --project tsconfig.build.json && node ../../scripts/check-no-dev-jsx.mjs",
+    "build:esm": "babel src --out-dir dist --extensions '.ts,.tsx' --out-file-extension '.js' --ignore '**/*.test.ts,**/*.test.tsx,**/__tests__/**,**/*.perf.test.*,**/*.doc.mjs,**/*.d.ts' --config-file ./babel.config.js",
+    "test": "vitest run --root ../..",
+    "lint": "eslint src",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@astryxdesign/core": "0.1.6",
+    "@tanstack/react-form": ">=1.0.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  },
+  "devDependencies": {
+    "@tanstack/react-form": "^1.0.0"
+  }
+}
