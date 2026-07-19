@@ -29,7 +29,10 @@
         "../../node_modules/@hookform/resolvers/*"
       ],
       "zod": [
-        "../../node_modules/zod"
+        "../../packages/astryx-rhf/node_modules/zod"
+      ],
+      "zod/*": [
+        "../../packages/astryx-rhf/node_modules/zod/*"
       ]
     }
   },

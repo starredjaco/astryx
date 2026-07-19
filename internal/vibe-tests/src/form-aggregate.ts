@@ -68,6 +68,8 @@ interface TargetAggregate {
   iterationId: string;
   byPrompt: Record<string, {score: FormScore; average: number; tier: string}>;
   scoredPrompts: number;
+  cleanCompiles: number;
+  compileRate: number;
   coreAverage: number;
   stretchAverage: number | null;
   dimensionAverages: Record<string, number>;
@@ -78,6 +80,17 @@ function loadManifest(iterationId: string): Manifest {
   return JSON.parse(fs.readFileSync(p, 'utf-8')) as Manifest;
 }
 
+/** tsc results written by the build sweep: promptId -> {buildSuccess, errorCount}. */
+function loadBuildErrors(
+  iterationId: string,
+): Record<string, {buildSuccess: boolean; errorCount: number}> {
+  const p = path.join(RESULTS_DIR, iterationId, 'build-errors.json');
+  if (!fs.existsSync(p)) {
+    return {};
+  }
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
 function readResult(iterationId: string, promptId: string): string | null {
   const p = path.join(RESULTS_DIR, iterationId, 'results', `${promptId}.tsx`);
   return fs.existsSync(p) ? fs.readFileSync(p, 'utf-8') : null;
@@ -86,6 +99,7 @@ function readResult(iterationId: string, promptId: string): string | null {
 function aggregateTarget(iterationId: string): TargetAggregate {
   const manifest = loadManifest(iterationId);
   const target = manifest.config.target;
+  const buildErrors = loadBuildErrors(iterationId);
   const byPrompt: TargetAggregate['byPrompt'] = {};
   const dimSums: Record<string, number> = {};
   const dims = getFormDimensionNames();
@@ -95,6 +109,7 @@ function aggregateTarget(iterationId: string): TargetAggregate {
   let coreCount = 0;
   let stretchSum = 0;
   let stretchCount = 0;
+  let cleanCompiles = 0;
 
   for (const p of manifest.prompts) {
     const code = readResult(iterationId, p.id);
@@ -114,6 +129,9 @@ function aggregateTarget(iterationId: string): TargetAggregate {
     const score: FormScore = evaluateForm(code, target, spec);
     const average = getFormAverage(score);
     byPrompt[p.id] = {score, average, tier: p.tier};
+    if (buildErrors[p.id]?.buildSuccess) {
+      cleanCompiles++;
+    }
     for (const d of dims) {dimSums[d] += score[d].score;}
     if (p.tier === 'core') {
       coreSum += average;
@@ -132,6 +150,8 @@ function aggregateTarget(iterationId: string): TargetAggregate {
     target,
     iterationId,
     scoredPrompts: Object.keys(byPrompt).length,
+    cleanCompiles,
+    compileRate: total ? Math.round((cleanCompiles / total) * 100) : 0,
     byPrompt,
     coreAverage: coreCount ? Math.round(coreSum / coreCount) : 0,
     stretchAverage: stretchCount ? Math.round(stretchSum / stretchCount) : null,
@@ -156,9 +176,18 @@ function main() {
   const aggregates = iterationIds.map(aggregateTarget);
   const dims = getFormDimensionNames();
 
-  // Headline: CORE-only.
+  // Headline: tsc compile rate (the strongest correctness signal) + CORE-only
+  // form-quality score.
   console.log('\n═══ Form-Framework Vibe Test — Results ═══\n');
-  console.log('HEADLINE (CORE tier only):\n');
+  console.log('HEADLINE — clean tsc compile rate (CORE):\n');
+  const byCompile = [...aggregates].sort((a, b) => b.compileRate - a.compileRate);
+  for (const a of byCompile) {
+    console.log(
+      `  ${a.target.padEnd(10)} ${String(a.compileRate).padStart(3)}%  (${a.cleanCompiles}/${a.scoredPrompts} compile clean, ${a.iterationId})`,
+    );
+  }
+
+  console.log('\nForm-quality score (CORE, form-specific dimensions):\n');
   const sorted = [...aggregates].sort((a, b) => b.coreAverage - a.coreAverage);
   for (const a of sorted) {
     console.log(`  ${a.target.padEnd(10)} ${String(a.coreAverage).padStart(3)}  (${a.scoredPrompts} scored, ${a.iterationId})`);

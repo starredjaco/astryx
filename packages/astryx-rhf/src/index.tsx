@@ -29,7 +29,11 @@ interface BridgeProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 > {
-  control: Control<TFieldValues>;
+  // Accept a Control from any resolver, including ones that transform the input
+  // type (e.g. a zod resolver whose output differs from the field values). The
+  // transformed-values generic is left open so callers using zodResolver with
+  // schema transforms still type-check.
+  control: Control<TFieldValues, unknown, FieldValues>;
   name: TName;
   label: string;
   description?: string;
