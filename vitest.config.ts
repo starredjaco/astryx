@@ -100,6 +100,7 @@ export default defineConfig({
           include: [
             'packages/core/src/**/*.test.{ts,tsx,mjs}',
             'packages/lab/src/**/*.test.{ts,tsx,mjs}',
+            'packages/formentor/src/**/*.test.{ts,tsx,mjs}',
           ],
         },
       },
@@ -124,6 +125,7 @@ export default defineConfig({
             ...configDefaults.exclude,
             'packages/core/**',
             'packages/lab/**',
+            'packages/formentor/**',
           ],
         },
       },

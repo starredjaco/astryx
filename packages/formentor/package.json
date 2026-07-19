@@ -1,0 +1,58 @@
+{
+  "name": "@astryxdesign/formentor",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Formentor for Astryx — a schema-aware form layer that crosses your data schema with Astryx components to render forms with minimal ceremony. Experimental concept; never released.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/facebook/astryx#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/astryx.git",
+    "directory": "packages/formentor"
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/astryx/issues"
+  },
+  "keywords": [
+    "astryx",
+    "forms",
+    "schema",
+    "design-system"
+  ],
+  "astryx": {
+    "canaryOnly": true,
+    "_comment": "Experimental concept package for the form-framework vibe-test evaluation. private:true is intentional — never publish."
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prepack": "pnpm build",
+    "build": "rm -rf dist && pnpm build:esm && tsc --project tsconfig.build.json && node ../../scripts/check-no-dev-jsx.mjs",
+    "build:esm": "babel src --out-dir dist --extensions '.ts,.tsx' --out-file-extension '.js' --ignore '**/*.test.ts,**/*.test.tsx,**/__tests__/**,**/*.perf.test.*,**/*.doc.mjs,**/*.d.ts' --config-file ./babel.config.js",
+    "dev": "babel src --watch --out-dir dist --extensions '.ts,.tsx' --out-file-extension '.js' --ignore '**/*.test.*,**/*.doc.mjs,**/*.d.ts' --config-file ./babel.config.js",
+    "test": "vitest run --root ../..",
+    "test:watch": "vitest --root ../..",
+    "lint": "eslint src",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "peerDependencies": {
+    "@astryxdesign/core": "0.1.6",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  }
+}
