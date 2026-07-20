@@ -10,7 +10,7 @@ tags:
   - 'CLI'
   - 'AI'
   - 'Composition'
-coverImage: '/blog/ai-is-a-copycat/cover.png'
+coverImage: '/blog/astryx-cli-build-command/cover.png'
 coverAlt: 'Many copies of the Astryx astronaut cat mascot arranged in rows on a light blue background'
 relatedDocs:
   - title: 'The best CLI is one you never run'
